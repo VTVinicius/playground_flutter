@@ -4,8 +4,6 @@ import '../../../data/AddressResponse.dart';
 import '../../../data/repository/address_repository.dart';
 import '../../../domain/usecase/get_address_usecase.dart';
 
-
-
 class AddressViewModel extends ChangeNotifier {
   final GetAddressUseCase _getAddressUseCase;
   AddressResponse? _endereco;
@@ -16,18 +14,23 @@ class AddressViewModel extends ChangeNotifier {
       : _getAddressUseCase = GetAddressUseCase(repository);
 
   AddressResponse? get endereco => _endereco;
+
   bool get isLoading => _isLoading;
 
   Future<void> buscarEndereco(String cep) async {
-    final params = GetAddressParam(cep);
     _isLoading = true;
-    try {
-      _endereco = await _getAddressUseCase(params);
-    } catch (e) {
-      _error = e.toString();
-    } finally {
-      _isLoading = false;
-    }
+    _getAddressUseCase.invoke(
+        params: GetAddressParam(cep),
+        onError: (erro) {
+          _error = erro.toString();
+        },
+        onSuccess: (resultado) {
+          _endereco = resultado;
+          notifyListeners();
+        },
+        onFinally: () {
+          _isLoading = false;
+        });
     notifyListeners();
   }
 

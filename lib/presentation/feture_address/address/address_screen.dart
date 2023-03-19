@@ -14,7 +14,6 @@ class AddressScreen extends StatefulWidget {
   @override
   State<AddressScreen> createState() => _MyAddressScreen();
 }
-
 class _MyAddressScreen extends State<AddressScreen> {
   var titulo = "Bem Vindo";
   var cep = "Pesquisar CEP";
@@ -29,36 +28,46 @@ class _MyAddressScreen extends State<AddressScreen> {
           alignment: Alignment.center,
           child: Consumer<AddressViewModel>(
             builder: (_, viewModel, __) {
-              return Column(children: [
-
-                Container(
-                  padding: const EdgeInsets.all(16),
-                  child:
-
-
-                  TextField(
-                    decoration: const InputDecoration(
-                      hintText: 'Pesquisar',
-                      border: OutlineInputBorder(),
-                      prefixIcon: Icon(Icons.search),
-                    ),
-                    maxLength: 8,
-                    keyboardType: TextInputType.number,
-                    inputFormatters: [
-                      FilteringTextInputFormatter.allow(RegExp(r'\d+')),
-                    ],
-                    onSubmitted: (value) {
-                      viewModel.buscarEndereco(value);
-                    },
-                  ),
-                ),
-                Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.max,
+              return Stack(
+                children: [
+                  Column(
                     children: [
-                      _TextFields(viewModel),
-                    ]),
-              ]);
+                      Container(
+                        padding: const EdgeInsets.all(16),
+                        child: TextField(
+                          decoration: const InputDecoration(
+                            hintText: 'Pesquisar',
+                            border: OutlineInputBorder(),
+                            prefixIcon: Icon(Icons.search),
+                          ),
+                          maxLength: 8,
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(RegExp(r'\d+')),
+                          ],
+                          onSubmitted: (value) {
+                            viewModel.buscarEndereco(value);
+                          },
+                        ),
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          _TextFields(viewModel),
+                        ],
+                      ),
+                    ],
+                  ),
+                  if (viewModel.isLoading)
+                    Container(
+                      color: Colors.black26,
+                      child: Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    ),
+                ],
+              );
             },
           ),
         ),
@@ -66,7 +75,6 @@ class _MyAddressScreen extends State<AddressScreen> {
     );
   }
 }
-
 Widget _TextFields(AddressViewModel viewModel) {
   return Container(
     padding: const EdgeInsets.all(16),

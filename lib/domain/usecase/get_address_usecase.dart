@@ -16,7 +16,7 @@ class GetAddressUseCase extends UseCase<AddressResponse?, GetAddressParam> {
   const GetAddressUseCase(this.repository);
 
   @override
-  Future<AddressResponse?> call(GetAddressParam params) {
+  Future<AddressResponse?> run(GetAddressParam params) {
     return repository.getAddress(params.cep);
   }
 }
