@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:playground_flutter/presentation/address/address_screen.dart';
-import 'package:playground_flutter/presentation/buttons_screen.dart';
+import 'package:playground_flutter/presentation/feature_home/buttons/buttons_screen.dart';
 import 'package:playground_flutter/presentation/widgets/MyCupertinoButton.dart';
 
-
-import 'input_text_screen.dart';
+import '../feture_address/address/address_screen.dart';
+import 'input_text/input_text_screen.dart';
 
 class OptionsScreen extends StatelessWidget {
   const OptionsScreen({Key? key}) : super(key: key);
@@ -27,10 +26,7 @@ class OptionsScreen extends StatelessWidget {
                 },
                 text: "Buttons",
               ),
-
               const SizedBox(height: 24),
-
-
               MyCupertinoButton(
                 onPressed: () {
                   Navigator.push(
@@ -40,10 +36,7 @@ class OptionsScreen extends StatelessWidget {
                 },
                 text: "Input Text",
               ),
-
               const SizedBox(height: 24),
-
-
               MyCupertinoButton(
                 onPressed: () {
                   Navigator.push(

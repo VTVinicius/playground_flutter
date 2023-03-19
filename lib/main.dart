@@ -3,11 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:playground_flutter/data/datasource/ViaCepDataSource.dart';
 import 'package:playground_flutter/data/repository/address_repository.dart';
 import 'package:playground_flutter/data/repository/address_repository_impl.dart';
-import 'package:playground_flutter/domain/usecase/get_address_usecase.dart';
-import 'package:playground_flutter/presentation/segundatela.dart';
+import 'package:playground_flutter/presentation/feature_home/options_screen.dart';
 
 import 'core/network.dart';
-import 'data/AddressResponse.dart';
 
 void main() {
   runApp(
@@ -62,7 +60,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   var titulo = "Bem Vindo";
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,9 +68,9 @@ class _MyHomePageState extends State<MyHomePage> {
         alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children:[
+          children: [
             const Text(
-             "teste",
+              "Bem vindo ao APP Flutter",
               style: TextStyle(
                 fontSize: 20,
               ),
@@ -83,16 +80,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: ((context) => const SegundaTela())));
+                          builder: ((context) => const OptionsScreen())));
                   // setState(() {
                   //   titulo = "teste";
                   // });
                 },
                 icon: const Icon(Icons.arrow_forward_sharp)),
-            IconButton(
-                onPressed: () {
-                },
-                icon: const Icon(Icons.arrow_forward_sharp))
           ],
         ),
       ),

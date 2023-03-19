@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:playground_flutter/presentation/address/address_view_model.dart';
+
 import 'package:provider/provider.dart';
 
-import '../../data/repository/address_repository.dart';
+import '../../../data/repository/address_repository.dart';
+import 'address_view_model.dart';
+
+
 
 class AddressScreen extends StatefulWidget {
   const AddressScreen({Key? key}) : super(key: key);
@@ -27,9 +30,13 @@ class _MyAddressScreen extends State<AddressScreen> {
           child: Consumer<AddressViewModel>(
             builder: (_, viewModel, __) {
               return Column(children: [
+
                 Container(
                   padding: const EdgeInsets.all(16),
-                  child: TextField(
+                  child:
+
+
+                  TextField(
                     decoration: const InputDecoration(
                       hintText: 'Pesquisar',
                       border: OutlineInputBorder(),

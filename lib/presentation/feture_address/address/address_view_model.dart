@@ -1,30 +1,38 @@
 import 'package:flutter/material.dart';
 
-import '../../data/AddressResponse.dart';
-import '../../data/repository/address_repository.dart';
-import '../../data/repository/address_repository_impl.dart';
-import '../../domain/usecase/get_address_usecase.dart';
+import '../../../data/AddressResponse.dart';
+import '../../../data/repository/address_repository.dart';
+import '../../../domain/usecase/get_address_usecase.dart';
+
+
 
 class AddressViewModel extends ChangeNotifier {
-
-
   final GetAddressUseCase _getAddressUseCase;
   AddressResponse? _endereco;
+  bool _isLoading = false;
+  String _error = "";
 
   AddressViewModel(AddressRepository repository)
       : _getAddressUseCase = GetAddressUseCase(repository);
 
   AddressResponse? get endereco => _endereco;
+  bool get isLoading => _isLoading;
 
   Future<void> buscarEndereco(String cep) async {
     final params = GetAddressParam(cep);
-    _endereco = await _getAddressUseCase(params);
+    _isLoading = true;
+    try {
+      _endereco = await _getAddressUseCase(params);
+    } catch (e) {
+      _error = e.toString();
+    } finally {
+      _isLoading = false;
+    }
     notifyListeners();
   }
 
-  void showAddress(){
+  void showAddress() {
     print('teste para ver o endereço $_endereco');
-
   }
 
   int _contador = 0;
