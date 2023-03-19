@@ -31,6 +31,7 @@ class AddressViewModel extends ChangeNotifier {
         },
         onFinally: () {
           _isLoading = false;
+          notifyListeners();
         });
     notifyListeners();
   }
