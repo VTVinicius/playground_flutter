@@ -12,15 +12,15 @@ abstract class UseCase<T, P> extends BaseUseCase<T> {
     Function(Object?)? onError,
     Function(T)? onSuccess,
     Function()? onFinally,
-  }) {
+  }) async {
     try {
-      run(params as P).then((value) {
+     await run(params as P).then((value) {
         onSuccess?.call(value);
       });
     } catch (e) {
-      onError?.call(e);
+     await onError?.call(e);
     } finally{
-      onFinally?.call();
+     await onFinally?.call();
     }
   }
 }

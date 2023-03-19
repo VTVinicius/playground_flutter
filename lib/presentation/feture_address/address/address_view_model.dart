@@ -23,6 +23,7 @@ class AddressViewModel extends ChangeNotifier {
         params: GetAddressParam(cep),
         onError: (erro) {
           _error = erro.toString();
+          notifyListeners();
         },
         onSuccess: (resultado) {
           _endereco = resultado;
