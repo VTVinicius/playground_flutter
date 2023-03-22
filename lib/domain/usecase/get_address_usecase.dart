@@ -1,8 +1,8 @@
 import 'package:playground_flutter/data/repository/address_repository.dart';
 
-import '../../core/usecase.dart';
+import '../../core/domain_exceptions.dart';
+import '../core/usecase.dart';
 import '../../data/AddressResponse.dart';
-import '../../data/repository/address_repository_impl.dart';
 
 class GetAddressParam {
   final String cep;
@@ -17,6 +17,12 @@ class GetAddressUseCase extends UseCase<AddressResponse?, GetAddressParam> {
 
   @override
   Future<AddressResponse?> run(GetAddressParam params) {
-    return repository.getAddress(params.cep);
+    if (params == null) {
+      throw TypeError();
+    } else if (params.cep.trim().isEmpty) {
+      throw MissingParamsException();
+    } else {
+      return repository.getAddress(params.cep);
+    }
   }
 }

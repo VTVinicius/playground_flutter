@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:provider/provider.dart';
 
+import '../../../core/base_widget.dart';
 import '../../../data/repository/address_repository.dart';
 import 'address_view_model.dart';
-
-
 
 class AddressScreen extends StatefulWidget {
   const AddressScreen({Key? key}) : super(key: key);
@@ -14,6 +12,7 @@ class AddressScreen extends StatefulWidget {
   @override
   State<AddressScreen> createState() => _MyAddressScreen();
 }
+
 class _MyAddressScreen extends State<AddressScreen> {
   var titulo = "Bem Vindo";
   var cep = "Pesquisar CEP";
@@ -22,59 +21,61 @@ class _MyAddressScreen extends State<AddressScreen> {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => AddressViewModel(context.read<AddressRepository>()),
-      child: Scaffold(
-        appBar: AppBar(title: const Text('Tela de Endereço Teste')),
-        body: Container(
-          alignment: Alignment.center,
-          child: Consumer<AddressViewModel>(
-            builder: (_, viewModel, __) {
-              return Stack(
-                children: [
-                  Column(
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.all(16),
-                        child: TextField(
-                          decoration: const InputDecoration(
-                            hintText: 'Pesquisar',
-                            border: OutlineInputBorder(),
-                            prefixIcon: Icon(Icons.search),
-                          ),
-                          maxLength: 8,
-                          keyboardType: TextInputType.number,
-                          inputFormatters: [
-                            FilteringTextInputFormatter.allow(RegExp(r'\d+')),
-                          ],
-                          onSubmitted: (value) {
-                            viewModel.buscarEndereco(value);
-                          },
-                        ),
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          _TextFields(viewModel),
-                        ],
-                      ),
-                    ],
-                  ),
-                  if (viewModel.isLoading)
+      child: Consumer<AddressViewModel>(
+        builder: (_, viewModel, __) {
+          return Scaffold(
+            appBar: AppBar(title: const Text('Tela de Endereço Teste')),
+            body: Container(
+              alignment: Alignment.center,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
                     Container(
-                      color: Colors.black26,
-                      child: Center(
-                        child: CircularProgressIndicator(),
+                      padding: const EdgeInsets.all(16),
+                      child: TextField(
+                        decoration: const InputDecoration(
+                          hintText: 'Pesquisar',
+                          border: OutlineInputBorder(),
+                          prefixIcon: Icon(Icons.search),
+                        ),
+                        maxLength: 8,
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(RegExp(r'\d+')),
+                        ],
+                        onSubmitted: (value) {
+                          viewModel.buscarEndereco(value);
+                        },
                       ),
                     ),
-                ],
-              );
-            },
-          ),
-        ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Stack(
+                          children: [
+                            _TextFields(viewModel),
+                            Center(
+                                child: WidgetError(
+                                    response: viewModel.state.value.endereco,
+                                )),
+                          ],
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            //caso queira passar um Erro personalizado, chamar validadeStateError(viewModel.error.)
+            //assim ele desconsiderará os erros genericos e pode chamar algum dialog personalizado.
+          );
+        },
       ),
     );
   }
 }
+
 Widget _TextFields(AddressViewModel viewModel) {
   return Container(
     padding: const EdgeInsets.all(16),
@@ -86,7 +87,7 @@ Widget _TextFields(AddressViewModel viewModel) {
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: '${viewModel.endereco?.cep ?? 'Não encontrado'}',
+            hintText: '${'Não encontrado'}',
           ),
           readOnly: true,
         ),
@@ -96,7 +97,7 @@ Widget _TextFields(AddressViewModel viewModel) {
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: '${viewModel.endereco?.uf ?? 'Não encontrado'}',
+            hintText: '${viewModel.state.value.endereco ?? 'Não encontrado'}',
           ),
           readOnly: true,
         ),
@@ -106,8 +107,7 @@ Widget _TextFields(AddressViewModel viewModel) {
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText:
-            '${viewModel.endereco?.localidade ?? 'Não encontrado'}',
+            hintText: '${viewModel.state.value.endereco ?? 'Não encontrado'}',
           ),
           readOnly: true,
         ),
@@ -117,8 +117,7 @@ Widget _TextFields(AddressViewModel viewModel) {
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText:
-            '${viewModel.endereco?.bairro ?? 'Não encontrado'}',
+            hintText: '${viewModel.state.value.endereco ?? 'Não encontrado'}',
           ),
           readOnly: true,
         ),
@@ -128,7 +127,7 @@ Widget _TextFields(AddressViewModel viewModel) {
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: '${viewModel.endereco?.logradouro ?? 'Não encontrado'}',
+            hintText: '${viewModel.state.value.endereco ?? 'Não encontrado'}',
           ),
           readOnly: true,
         ),

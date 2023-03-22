@@ -9,18 +9,18 @@ abstract class UseCase<T, P> extends BaseUseCase<T> {
 
   void invoke({
     P? params,
-    Function(Object?)? onError,
     Function(T)? onSuccess,
+    Function(Object?)? onError,
     Function()? onFinally,
   }) async {
     try {
-     await run(params as P).then((value) {
+      await run(params as P).then((value) {
         onSuccess?.call(value);
       });
     } catch (e) {
-     await onError?.call(e);
-    } finally{
-     await onFinally?.call();
+      await onError?.call(e);
+    } finally {
+      await onFinally?.call();
     }
   }
 }
@@ -29,4 +29,20 @@ abstract class NoParamsUseCase<T> extends BaseUseCase<T> {
   const NoParamsUseCase() : super();
 
   Future<T> run();
+
+  void invoke({
+    Function(T)? onSuccess,
+    Function(Object?)? onError,
+    Function()? onFinally,
+  }) async {
+    try {
+      await run().then((value) {
+        onSuccess?.call(value);
+      });
+    } catch (e) {
+      await onError?.call(e);
+    } finally {
+      await onFinally?.call();
+    }
+  }
 }
