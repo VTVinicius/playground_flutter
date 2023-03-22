@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:playground_flutter/core/base_response.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/base_widget.dart';
@@ -87,7 +88,7 @@ Widget _TextFields(AddressViewModel viewModel) {
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: '${'Não encontrado'}',
+            hintText: viewModel.state.value.endereco.asSuccessOrNull()?.cep ?? 'Não encontrado',
           ),
           readOnly: true,
         ),
@@ -97,7 +98,7 @@ Widget _TextFields(AddressViewModel viewModel) {
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: '${viewModel.state.value.endereco ?? 'Não encontrado'}',
+            hintText: viewModel.state.value.endereco.asSuccessOrNull()?.uf ?? 'Não encontrado',
           ),
           readOnly: true,
         ),
@@ -107,7 +108,7 @@ Widget _TextFields(AddressViewModel viewModel) {
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: '${viewModel.state.value.endereco ?? 'Não encontrado'}',
+            hintText: viewModel.state.value.endereco.asSuccessOrNull()?.localidade ?? 'Não encontrado',
           ),
           readOnly: true,
         ),
@@ -117,7 +118,7 @@ Widget _TextFields(AddressViewModel viewModel) {
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: '${viewModel.state.value.endereco ?? 'Não encontrado'}',
+            hintText: viewModel.state.value.endereco.asSuccessOrNull()?.bairro ?? 'Não encontrado',
           ),
           readOnly: true,
         ),
@@ -127,7 +128,7 @@ Widget _TextFields(AddressViewModel viewModel) {
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: '${viewModel.state.value.endereco ?? 'Não encontrado'}',
+            hintText: viewModel.state.value.endereco.asSuccessOrNull()?.logradouro ?? 'Não encontrado',
           ),
           readOnly: true,
         ),
