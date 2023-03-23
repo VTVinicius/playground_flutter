@@ -33,3 +33,7 @@ extension AsyncExtensions<T> on BaseResponse<T> {
 
   T? asSuccessOrNull() => this is Success<T> ? (this as Success<T>).value : null;
 }
+
+extension ErrorExtensions<T> on BaseResponse<T> {
+  Object? getErrorOrNull() => this is Error<T> ? (this as Error<T>).error : null;
+}

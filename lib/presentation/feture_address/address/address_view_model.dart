@@ -22,19 +22,6 @@ class AddressViewModel extends ChangeNotifier {
   AddressViewModel(AddressRepository repository)
       : _getAddressUseCase = GetAddressUseCase(repository);
 
-  bool get isLoading => _isLoading;
-
-  Object? get error => _error;
-
-  void teste() {
-    if (error is SocketException) {
-      print('Ocorreu um erro de conexão');
-    } else if (error is HttpException) {
-      print('Ocorreu um erro de conexão 2 ');
-    } else {
-      print('Ocorreu um erro de conexão 3');
-    }
-  }
 
   Future<void> buscarEndereco(String cep) async {
     _state.updateState((cepState) => cepState.copyWith(endereco: Loading()));
@@ -47,10 +34,9 @@ class AddressViewModel extends ChangeNotifier {
         },
         onError: (erro) {
           _state.updateState(
-              (cepState) => cepState.copyWith(endereco: Error(error: error)));
+              (cepState) => cepState.copyWith(endereco: Error(error: erro)));
           _error = erro;
           notifyListeners();
-          teste();
         },
        );
     notifyListeners();

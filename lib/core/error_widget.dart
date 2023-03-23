@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:playground_flutter/core/base_response.dart';
 import 'package:playground_flutter/uikit/widgets/loading.dart';
@@ -40,23 +42,42 @@ class _WidgetErrorState<T> extends State<WidgetError<T>> {
       },
     );
   }
-
   Widget _alertDialog(BuildContext context) {
-    return AlertDialog(
-      title: Text('Erro'),
-      content: Text(
-          validateError(widget.response) ?? widget.error ?? 'Ocorreu um erro'),
-      actions: [
-        TextButton(
-          onPressed: () {
-            setState(() {
-              widget.response = Waiting<T>();
-            });
-          },
-          child: Text('Ok'),
+    return Stack(
+      children: [
+        const Opacity(
+          opacity: 0.5,
+          child: ModalBarrier(
+            dismissible: false,
+            color: Colors.black,
+          ),
+        ),
+        // Adicione o BackdropFilter logo abaixo do ModalBarrier
+        BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+          child: Container(
+            color: Colors.transparent,
+          ),
+        ),
+        Center(
+          child: AlertDialog(
+            title: Text('Erro'),
+            content: Text(validateError(widget.response.getErrorOrNull()) ?? widget.error ?? 'Ocorreu um erro'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  setState(() {
+                    widget.response = Waiting<T>();
+                  });
+                },
+                child: Text('Ok'),
+              )
+            ],
+          ),
         ),
       ],
     );
   }
 }
+
 

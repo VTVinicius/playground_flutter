@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:playground_flutter/core/base_response.dart';
 import 'package:provider/provider.dart';
 
-import '../../../core/base_widget.dart';
+import '../../../core/error_widget.dart';
 import '../../../data/repository/address_repository.dart';
 import 'address_view_model.dart';
 
