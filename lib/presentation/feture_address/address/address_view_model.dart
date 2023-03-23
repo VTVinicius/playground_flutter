@@ -36,11 +36,6 @@ class AddressViewModel extends ChangeNotifier {
     }
   }
 
-  void clearError() {
-    _state.updateState((cepState) => cepState.copyWith(endereco: Waiting()));
-    notifyListeners();
-  }
-
   Future<void> buscarEndereco(String cep) async {
     _state.updateState((cepState) => cepState.copyWith(endereco: Loading()));
     _getAddressUseCase.invoke(
@@ -57,10 +52,7 @@ class AddressViewModel extends ChangeNotifier {
           notifyListeners();
           teste();
         },
-        onFinally: () {
-          _isLoading = false;
-          notifyListeners();
-        });
+       );
     notifyListeners();
   }
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:playground_flutter/core/base_response.dart';
+import 'package:playground_flutter/core/loading.dart';
 import 'package:playground_flutter/domain/core/error_validator.dart';
 
 typedef ContentBuilder<T> = Widget Function(BuildContext context, T value);
@@ -8,10 +9,12 @@ typedef ErrorBuilder = Widget Function(BuildContext context);
 class WidgetError<T> extends StatefulWidget {
   BaseResponse<T> response;
   bool? waiting = true;
+  String? error;
 
   WidgetError({
     required this.response,
     this.waiting = true,
+    this.error,
   });
 
   @override
@@ -19,7 +22,6 @@ class WidgetError<T> extends StatefulWidget {
 }
 
 class _WidgetErrorState<T> extends State<WidgetError<T>> {
-
   @override
   Widget build(BuildContext context) {
     return Builder(
@@ -27,7 +29,7 @@ class _WidgetErrorState<T> extends State<WidgetError<T>> {
         if (widget.response is Error<T>) {
           return _alertDialog(context);
         } else if (widget.response is Loading<T>) {
-          return const CircularProgressIndicator();
+          return LoadingWidget(isLoading: true);
         } else if (widget.response is Success<T>) {
           return const SizedBox.shrink();
         } else if (widget.response is Waiting<T> && widget.waiting == true) {
@@ -40,20 +42,21 @@ class _WidgetErrorState<T> extends State<WidgetError<T>> {
   }
 
   Widget _alertDialog(BuildContext context) {
-
-      return AlertDialog(
-        title: Text('Erro'),
-        content: Text(validateError(widget.response)),
-        actions: [
-          TextButton(
-            onPressed: () {
-              setState(() {
-                widget.response = Waiting<T>();
-              });
-            },
-            child: Text('Ok'),
-          ),
-        ],
-      );
+    return AlertDialog(
+      title: Text('Erro'),
+      content: Text(
+          validateError(widget.response) ?? widget.error ?? 'Ocorreu um erro'),
+      actions: [
+        TextButton(
+          onPressed: () {
+            setState(() {
+              widget.response = Waiting<T>();
+            });
+          },
+          child: Text('Ok'),
+        ),
+      ],
+    );
   }
 }
+

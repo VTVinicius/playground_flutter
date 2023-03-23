@@ -24,52 +24,52 @@ class _MyAddressScreen extends State<AddressScreen> {
       create: (_) => AddressViewModel(context.read<AddressRepository>()),
       child: Consumer<AddressViewModel>(
         builder: (_, viewModel, __) {
-          return Scaffold(
-            appBar: AppBar(title: const Text('Tela de Endereço Teste')),
-            body: Container(
-              alignment: Alignment.center,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(16),
-                      child: TextField(
-                        decoration: const InputDecoration(
-                          hintText: 'Pesquisar',
-                          border: OutlineInputBorder(),
-                          prefixIcon: Icon(Icons.search),
-                        ),
-                        maxLength: 8,
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.allow(RegExp(r'\d+')),
-                        ],
-                        onSubmitted: (value) {
-                          viewModel.buscarEndereco(value);
-                        },
-                      ),
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Stack(
-                          children: [
-                            _TextFields(viewModel),
-                            Center(
-                                child: WidgetError(
-                                    response: viewModel.state.value.endereco,
-                                )),
+          return Stack(
+            children: [
+              Scaffold(
+                appBar: AppBar(title: const Text('Tela de Endereço Teste')),
+                body: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(16),
+                        child: TextField(
+                          decoration: const InputDecoration(
+                            hintText: 'Pesquisar',
+                            border: OutlineInputBorder(),
+                            prefixIcon: Icon(Icons.search),
+                          ),
+                          maxLength: 8,
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(RegExp(r'\d+')),
                           ],
-                        )
-                      ],
-                    ),
-                  ],
+                          onSubmitted: (value) {
+                            viewModel.buscarEndereco(value);
+                          },
+                        ),
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Stack(
+                            children: [
+                              _TextFields(viewModel),
+                            ],
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
+                //caso queira passar um Erro personalizado, chamar validadeStateError(viewModel.error.)
+                //assim ele desconsiderará os erros genericos e pode chamar algum dialog personalizado.
               ),
-            ),
-            //caso queira passar um Erro personalizado, chamar validadeStateError(viewModel.error.)
-            //assim ele desconsiderará os erros genericos e pode chamar algum dialog personalizado.
+              WidgetError(
+                response: viewModel.state.value.endereco,
+                error: "Não foi possível encontrar o endereço",
+              ),            ],
           );
         },
       ),
@@ -88,7 +88,8 @@ Widget _TextFields(AddressViewModel viewModel) {
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: viewModel.state.value.endereco.asSuccessOrNull()?.cep ?? 'Não encontrado',
+            hintText: viewModel.state.value.endereco.asSuccessOrNull()?.cep ??
+                'Não encontrado',
           ),
           readOnly: true,
         ),
@@ -98,7 +99,8 @@ Widget _TextFields(AddressViewModel viewModel) {
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: viewModel.state.value.endereco.asSuccessOrNull()?.uf ?? 'Não encontrado',
+            hintText: viewModel.state.value.endereco.asSuccessOrNull()?.uf ??
+                'Não encontrado',
           ),
           readOnly: true,
         ),
@@ -108,7 +110,9 @@ Widget _TextFields(AddressViewModel viewModel) {
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: viewModel.state.value.endereco.asSuccessOrNull()?.localidade ?? 'Não encontrado',
+            hintText:
+                viewModel.state.value.endereco.asSuccessOrNull()?.localidade ??
+                    'Não encontrado',
           ),
           readOnly: true,
         ),
@@ -118,7 +122,9 @@ Widget _TextFields(AddressViewModel viewModel) {
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: viewModel.state.value.endereco.asSuccessOrNull()?.bairro ?? 'Não encontrado',
+            hintText:
+                viewModel.state.value.endereco.asSuccessOrNull()?.bairro ??
+                    'Não encontrado',
           ),
           readOnly: true,
         ),
@@ -128,7 +134,9 @@ Widget _TextFields(AddressViewModel viewModel) {
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText: viewModel.state.value.endereco.asSuccessOrNull()?.logradouro ?? 'Não encontrado',
+            hintText:
+                viewModel.state.value.endereco.asSuccessOrNull()?.logradouro ??
+                    'Não encontrado',
           ),
           readOnly: true,
         ),

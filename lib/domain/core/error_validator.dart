@@ -1,6 +1,6 @@
 import 'dart:io';
 
-String validateError(Object? error) {
+String? validateError(Object? error) {
 
   switch (error.runtimeType) {
     case SocketException:
@@ -8,6 +8,6 @@ String validateError(Object? error) {
     case HttpException:
       return "Ocorreu um erro de conexão";
     default:
-      return "Ocorreu um erro";
+      return null;
   }
 }
