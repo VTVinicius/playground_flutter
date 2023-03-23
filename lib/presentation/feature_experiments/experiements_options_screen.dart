@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:playground_flutter/presentation/feature_home/buttons/buttons_screen.dart';
-
-
-
 import '../../uikit/widgets/MyCupertinoButton.dart';
-import '../feture_address/address/address_screen.dart';
+import 'buttons/buttons_screen.dart';
 import 'input_text/input_text_screen.dart';
+import '../feture_address/address/address_screen.dart';
 
-class OptionsScreen extends StatelessWidget {
-  const OptionsScreen({Key? key}) : super(key: key);
+
+class ExperimentOptionsScreen extends StatelessWidget {
+  const ExperimentOptionsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
