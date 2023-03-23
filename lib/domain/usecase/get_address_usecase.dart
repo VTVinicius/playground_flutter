@@ -1,6 +1,6 @@
 import 'package:playground_flutter/data/repository/address_repository.dart';
 
-import '../../core/domain_exceptions.dart';
+import '../core/domain_exceptions.dart';
 import '../core/usecase.dart';
 import '../../data/AddressResponse.dart';
 
