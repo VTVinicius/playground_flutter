@@ -2,8 +2,9 @@ import 'dart:convert';
 
 import 'package:playground_flutter/core/base_response.dart';
 
-import '../../core/network.dart';
-import '../AddressResponse.dart';
+
+import '../../../core/network.dart';
+import '../model/AddressResponse.dart';
 
 class ViaCepDataSource {
   ViaCepDataSource(this.networkManager);

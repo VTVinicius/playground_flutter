@@ -1,6 +1,6 @@
 
 import 'package:playground_flutter/core/base_response.dart';
-import 'package:playground_flutter/data/AddressResponse.dart';
+import 'package:playground_flutter/data/data_remote/model/AddressResponse.dart';
 
 class CepState {
   BaseResponse<AddressResponse?> endereco;

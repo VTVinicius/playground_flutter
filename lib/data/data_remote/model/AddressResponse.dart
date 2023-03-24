@@ -20,8 +20,7 @@ class AddressResponse {
       required this.ibge,
       required this.gia,
       required this.ddd,
-      required this.siafi
-      });
+      required this.siafi});
 
   factory AddressResponse.fromJson(Map<String, dynamic> json) {
     return AddressResponse(
@@ -37,4 +36,6 @@ class AddressResponse {
       siafi: json['siafi'],
     );
   }
+
+
 }

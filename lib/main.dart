@@ -1,21 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:playground_flutter/data/datasource/ViaCepDataSource.dart';
-import 'package:playground_flutter/data/repository/address_repository.dart';
-import 'package:playground_flutter/data/repository/address_repository_impl.dart';
 import 'package:playground_flutter/presentation/feature_home/widgets/home_buttons_list.dart';
 import 'package:playground_flutter/presentation/feature_home/widgets/home_top_bar.dart';
 import 'package:playground_flutter/presentation/feature_home/widgets/projects_list.dart';
 
 import 'core/network.dart';
+import 'data/data_local/database/AddressDAO.dart';
+import 'data/data_local/database/database_helper.dart';
+import 'data/data_local/datasource/address_local_repository.dart';
+import 'data/data_local/datasource/address_local_repository_impl.dart';
+import 'data/data_remote/datasource/ViaCepDataSource.dart';
+import 'data/data_remote/repository/address_repository.dart';
+import 'data/data_remote/repository/address_repository_impl.dart';
 
-void main() {
+Future<void> initDatabase() async {
+  final dbHelper = DatabaseHelper();
+  await dbHelper.init();
+}
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  initDatabase();
+
   runApp(
     MultiRepositoryProvider(
       providers: [
         ///
         /// Services
         ///
+        ///
+        RepositoryProvider<DatabaseHelper>(
+          create: (context) => DatabaseHelper(),
+        ),
         RepositoryProvider<NetworkManager>(
           create: (context) => NetworkManager(),
         ),
@@ -26,12 +43,19 @@ void main() {
         RepositoryProvider<ViaCepDataSource>(
           create: (context) => ViaCepDataSource(context.read<NetworkManager>()),
         ),
+        RepositoryProvider<AddressDAO>(
+          create: (context) => AddressDAO(context.read<DatabaseHelper>()),
+        ),
         RepositoryProvider<AddressRepository>(
           create: (context) => AddressRepositoryImpl(
               viaCepDataSource: context.read<ViaCepDataSource>()),
         ),
+        RepositoryProvider<AddressLocalRepository>(
+          create: (context) => AddressLocalRepositoryImpl(
+              addressDAO: context.read<AddressDAO>()),
+        ),
       ],
-      child: const MyApp(),
+      child: await const MyApp(),
     ),
   );
 }
@@ -83,21 +107,17 @@ class _MyHomePageState extends State<MyHomePage> {
               SizedBox(height: 16),
               ProjectsList(),
               SizedBox(height: 32),
-
               Row(children: const [
                 Padding(
                   padding: EdgeInsets.only(left: 16.0),
                   child: Text("Aplicações",
                       textAlign: TextAlign.left,
                       style:
-                      TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
                 ),
               ]),
-
               SizedBox(height: 16),
-
               HomeButtonsList(),
-
               SizedBox(height: 32)
             ],
           ),

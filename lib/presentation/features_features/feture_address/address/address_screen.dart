@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:playground_flutter/core/base_response.dart';
+import 'package:playground_flutter/presentation/features_features/feture_address/history/history_sceen.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/error_widget.dart';
-import '../../../../data/repository/address_repository.dart';
+import '../../../../data/data_local/datasource/address_local_repository.dart';
+import '../../../../data/data_remote/repository/address_repository.dart';
+import '../../../../uikit/widgets/MyCupertinoButton.dart';
 import 'address_view_model.dart';
 
 class AddressScreen extends StatefulWidget {
@@ -21,7 +24,7 @@ class _MyAddressScreen extends State<AddressScreen> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => AddressViewModel(context.read<AddressRepository>()),
+      create: (_) => AddressViewModel(context.read<AddressRepository>(), context.read<AddressLocalRepository>()),
       child: Consumer<AddressViewModel>(
         builder: (_, viewModel, __) {
           return Stack(
@@ -53,11 +56,16 @@ class _MyAddressScreen extends State<AddressScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Stack(
-                            children: [
-                              _TextFields(viewModel),
-                            ],
-                          )
+                          _TextFields(viewModel),
+                          MyCupertinoButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: ((context) => const HistoryScreen())));
+                            },
+                            text: "Historico",
+                          ),
                         ],
                       ),
                     ],
@@ -69,7 +77,8 @@ class _MyAddressScreen extends State<AddressScreen> {
               WidgetError(
                 response: viewModel.state.value.endereco,
                 error: "Não foi possível encontrar o endereço",
-              ),            ],
+              ),
+            ],
           );
         },
       ),

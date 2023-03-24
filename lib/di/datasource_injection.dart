@@ -1,9 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:playground_flutter/data/repository/address_repository_impl.dart';
+
 
 import '../core/network.dart';
-import '../data/datasource/ViaCepDataSource.dart';
-import '../data/repository/address_repository.dart';
+import '../data/data_remote/datasource/ViaCepDataSource.dart';
+import '../data/data_remote/repository/address_repository.dart';
+import '../data/data_remote/repository/address_repository_impl.dart';
+
 
 setupInjectionDataSource() {
   RepositoryProvider<ViaCepDataSource>(

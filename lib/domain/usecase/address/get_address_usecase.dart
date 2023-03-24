@@ -1,8 +1,9 @@
-import 'package:playground_flutter/data/repository/address_repository.dart';
 
-import '../core/domain_exceptions.dart';
-import '../core/usecase.dart';
-import '../../data/AddressResponse.dart';
+
+import '../../../data/data_remote/repository/address_repository.dart';
+import '../../core/domain_exceptions.dart';
+import '../../core/usecase.dart';
+import '../../../data/data_remote/model/AddressResponse.dart';
 
 class GetAddressParam {
   final String cep;

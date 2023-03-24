@@ -1,6 +1,6 @@
-import 'package:playground_flutter/data/datasource/ViaCepDataSource.dart';
 
-import '../AddressResponse.dart';
+import '../datasource/ViaCepDataSource.dart';
+import '../model/AddressResponse.dart';
 import 'address_repository.dart';
 
 class AddressRepositoryImpl extends AddressRepository {
