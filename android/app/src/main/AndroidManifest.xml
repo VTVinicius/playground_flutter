@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
    <application
-        android:label="playground_flutter"
+        android:label="Playground Flutter"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
