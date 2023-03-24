@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../uikit/widgets/MyCupertinoButton.dart';
 import 'buttons/buttons_screen.dart';
 import 'input_text/input_text_screen.dart';
-import '../feture_address/address/address_screen.dart';
 
 
 class ExperimentOptionsScreen extends StatelessWidget {
@@ -36,16 +35,6 @@ class ExperimentOptionsScreen extends StatelessWidget {
                 },
                 text: "Input Text",
               ),
-              const SizedBox(height: 24),
-              MyCupertinoButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: ((context) => const AddressScreen())));
-                },
-                text: "Address Screen",
-              )
             ],
           )),
     );

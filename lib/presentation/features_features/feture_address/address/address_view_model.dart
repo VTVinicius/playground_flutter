@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:playground_flutter/core/base_response.dart';
 
-import '../../../data/AddressResponse.dart';
-import '../../../data/repository/address_repository.dart';
-import '../../../domain/usecase/get_address_usecase.dart';
+import '../../../../data/AddressResponse.dart';
+import '../../../../data/repository/address_repository.dart';
+import '../../../../domain/usecase/get_address_usecase.dart';
 import 'address_state.dart';
 
 class AddressViewModel extends ChangeNotifier {

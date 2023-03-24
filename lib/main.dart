@@ -4,7 +4,8 @@ import 'package:playground_flutter/data/datasource/ViaCepDataSource.dart';
 import 'package:playground_flutter/data/repository/address_repository.dart';
 import 'package:playground_flutter/data/repository/address_repository_impl.dart';
 import 'package:playground_flutter/presentation/feature_home/widgets/home_buttons_list.dart';
-import 'package:playground_flutter/uikit/theme/app_colors.dart';
+import 'package:playground_flutter/presentation/feature_home/widgets/home_top_bar.dart';
+import 'package:playground_flutter/presentation/feature_home/widgets/projects_list.dart';
 
 import 'core/network.dart';
 
@@ -12,7 +13,6 @@ void main() {
   runApp(
     MultiRepositoryProvider(
       providers: [
-
         ///
         /// Services
         ///
@@ -27,9 +27,8 @@ void main() {
           create: (context) => ViaCepDataSource(context.read<NetworkManager>()),
         ),
         RepositoryProvider<AddressRepository>(
-          create: (context) =>
-              AddressRepositoryImpl(
-                  viaCepDataSource: context.read<ViaCepDataSource>()),
+          create: (context) => AddressRepositoryImpl(
+              viaCepDataSource: context.read<ViaCepDataSource>()),
         ),
       ],
       child: const MyApp(),
@@ -67,40 +66,43 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        alignment: Alignment.center,
-        child: Column(
-          children: [TopBarHome(), HomeButtonsList()],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              TopBarHome(),
+              SizedBox(height: 42),
+              Row(children: const [
+                Padding(
+                  padding: EdgeInsets.only(left: 16.0),
+                  child: Text("Projetos",
+                      textAlign: TextAlign.left,
+                      style:
+                          TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                ),
+              ]),
+              SizedBox(height: 16),
+              ProjectsList(),
+              SizedBox(height: 32),
+
+              Row(children: const [
+                Padding(
+                  padding: EdgeInsets.only(left: 16.0),
+                  child: Text("Aplicações",
+                      textAlign: TextAlign.left,
+                      style:
+                      TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                ),
+              ]),
+
+              SizedBox(height: 16),
+
+              HomeButtonsList(),
+
+              SizedBox(height: 32)
+            ],
+          ),
         ),
       ),
     );
-  }
-}
-
-class TopBarHome extends StatelessWidget {
-  const TopBarHome({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.all(0),
-      elevation: 8,
-      shape:  const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(20),
-          bottomRight: Radius.circular(20),
-        ),
-      ),
-      child: Container(
-      height: 216,
-      width: double.infinity,
-      color: AppColors.greenApp,
-      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Image.asset(
-          "assets/images/img_vini.png",
-          height: 90,
-          width: 90,
-        ),
-      ]),
-    ),);
   }
 }
