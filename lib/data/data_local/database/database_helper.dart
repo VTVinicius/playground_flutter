@@ -35,8 +35,7 @@ class DatabaseHelper {
   Future _onCreate(Database db, int version) async {
     await db.execute('''
           CREATE TABLE $table (
-            $columnId INTEGER PRIMARY KEY,
-            $columnCEP TEXT NOT NULL,
+            $columnCEP TEXT PRIMARY KEY,
             $columnCidade TEXT NOT NULL,
             $columnUF TEXT NOT NULL,
             $columnBairro TEXT NOT NULL,
@@ -54,7 +53,7 @@ class DatabaseHelper {
     );
   }
 
-  Future<List<AddressLocal>> getAllAddresses() async {
+  Future<List<AddressLocal?>> getAllAddresses() async {
     final Database db = await _db;
     final List<Map<String, dynamic>> maps = await db.query(table);
 
@@ -77,20 +76,20 @@ class DatabaseHelper {
   }
 
   Future<int> update(Map<String, dynamic> row) async {
-    int id = row[columnId];
+    String cep = row[columnCEP];
     return await _db.update(
       table,
       row,
-      where: '$columnId = ?',
-      whereArgs: [id],
+      where: '$columnCEP = ?',
+      whereArgs: [cep],
     );
   }
 
-  Future<int> delete(int id) async {
+  Future<int> delete(String cep) async {
     return await _db.delete(
       table,
-      where: '$columnId = ?',
-      whereArgs: [id],
+      where: '$columnCEP = ?',
+      whereArgs: [cep],
     );
   }
 }

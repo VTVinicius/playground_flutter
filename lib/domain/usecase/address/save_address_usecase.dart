@@ -29,8 +29,7 @@ class SaveAddressUseCase extends UseCase<void, SaveAddressParam> {
   }
 
   static AddressLocal fromAddressResponse(AddressResponse response) {
-    return AddressLocal(
-      id: 0, // Defina um ID padrão ou passe como parâmetro se necessário
+    return AddressLocal(// Defina um ID padrão ou passe como parâmetro se necessário
       cep: response.cep,
       cidade: response.localidade,
       uf: response.uf,
