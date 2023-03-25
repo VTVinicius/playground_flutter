@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:playground_flutter/core/base_response.dart';
 import 'package:playground_flutter/data/data_local/datasource/address_local_repository.dart';
 import 'package:playground_flutter/presentation/features_features/feture_address/history/history_viewmodel.dart';
@@ -20,7 +21,7 @@ class _MyHistoryScreen extends State<HistoryScreen> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => HistoryViewModel(context.read<AddressLocalRepository>()),
+      create: (_) => GetIt.instance.get<HistoryViewModel>(),
       child: Consumer<HistoryViewModel>(
         builder: (_, viewModel, __) {
           return Stack(

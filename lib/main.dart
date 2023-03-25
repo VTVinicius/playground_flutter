@@ -1,17 +1,11 @@
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:playground_flutter/presentation/feature_home/widgets/home_buttons_list.dart';
 import 'package:playground_flutter/presentation/feature_home/widgets/home_top_bar.dart';
 import 'package:playground_flutter/presentation/feature_home/widgets/projects_list.dart';
-
-import 'core/network.dart';
-import 'data/data_local/database/AddressDAO.dart';
 import 'data/data_local/database/database_helper.dart';
-import 'data/data_local/datasource/address_local_repository.dart';
-import 'data/data_local/datasource/address_local_repository_impl.dart';
-import 'data/data_remote/datasource/ViaCepDataSource.dart';
-import 'data/data_remote/repository/address_repository.dart';
-import 'data/data_remote/repository/address_repository_impl.dart';
+import 'di/setup_get_it.dart';
 
 Future<void> initDatabase() async {
   final dbHelper = DatabaseHelper();
@@ -22,41 +16,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   initDatabase();
+  setupGetIt();
 
   runApp(
-    MultiRepositoryProvider(
-      providers: [
-        ///
-        /// Services
-        ///
-        ///
-        RepositoryProvider<DatabaseHelper>(
-          create: (context) => DatabaseHelper(),
-        ),
-        RepositoryProvider<NetworkManager>(
-          create: (context) => NetworkManager(),
-        ),
-
-        ///
-        /// Data sources
-        ///
-        RepositoryProvider<ViaCepDataSource>(
-          create: (context) => ViaCepDataSource(context.read<NetworkManager>()),
-        ),
-        RepositoryProvider<AddressDAO>(
-          create: (context) => AddressDAO(context.read<DatabaseHelper>()),
-        ),
-        RepositoryProvider<AddressRepository>(
-          create: (context) => AddressRepositoryImpl(
-              viaCepDataSource: context.read<ViaCepDataSource>()),
-        ),
-        RepositoryProvider<AddressLocalRepository>(
-          create: (context) => AddressLocalRepositoryImpl(
-              addressDAO: context.read<AddressDAO>()),
-        ),
-      ],
-      child: await const MyApp(),
-    ),
+    await const MyApp(),
   );
 }
 

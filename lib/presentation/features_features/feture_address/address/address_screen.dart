@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get_it/get_it.dart';
 import 'package:playground_flutter/core/base_response.dart';
 import 'package:playground_flutter/presentation/features_features/feture_address/history/history_sceen.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +25,7 @@ class _MyAddressScreen extends State<AddressScreen> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => AddressViewModel(context.read<AddressRepository>(), context.read<AddressLocalRepository>()),
+      create: (_) => GetIt.instance.get<AddressViewModel>(),
       child: Consumer<AddressViewModel>(
         builder: (_, viewModel, __) {
           return Stack(
