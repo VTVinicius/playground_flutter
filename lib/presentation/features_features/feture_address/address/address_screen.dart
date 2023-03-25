@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import '../../../../core/error_widget.dart';
 import '../../../../data/data_local/datasource/address_local_repository.dart';
 import '../../../../data/data_remote/repository/address_repository.dart';
-import '../../../../uikit/widgets/MyCupertinoButton.dart';
+import '../../../../uikit/widgets/buttons/MyCupertinoButton.dart';
 import 'address_view_model.dart';
 
 class AddressScreen extends StatefulWidget {

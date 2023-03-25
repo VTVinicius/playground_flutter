@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../uikit/widgets/MyCupertinoButton.dart';
-import 'buttons/buttons_screen.dart';
-import 'input_text/input_text_screen.dart';
+import 'package:playground_flutter/uikit/theme/app_colors.dart';
 
+import '../../uikit/widgets/app_bar/custom_app_bar.dart';
+import '../../uikit/widgets/buttons/options_custom_button.dart';
 
 class ExperimentOptionsScreen extends StatelessWidget {
   const ExperimentOptionsScreen({Key? key}) : super(key: key);
@@ -10,33 +10,38 @@ class ExperimentOptionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Opções de Teste')),
+      appBar: CustomAppBar(
+        titleText: 'Experimentos',
+        textColor: AppColors.greenExperimentsDark,
+        backgroundColor: AppColors.greenExperimentsLight
+      ),
       body: Container(
-          alignment: Alignment.center,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              MyCupertinoButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: ((context) => const ButtonsScreen())));
-                },
-                text: "Buttons",
-              ),
-              const SizedBox(height: 24),
-              MyCupertinoButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: ((context) => const InputTextScreen())));
-                },
-                text: "Input Text",
-              ),
-            ],
-          )),
+        alignment: Alignment.center,
+        child: SingleChildScrollView(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            OptionsCustomButton(
+              onPressed: () {},
+              text: "Em Breve",
+              buttonColor: AppColors.greenExperimentsLight,
+              textColor: AppColors.greenExperimentsDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {},
+              text: "Em Breve",
+              buttonColor: AppColors.greenExperimentsLight,
+              textColor: AppColors.greenExperimentsDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {},
+              text: "Em Breve",
+              buttonColor: AppColors.greenExperimentsLight,
+              textColor: AppColors.greenExperimentsDark,
+            ),
+          ],
+        )),
+      ),
     );
   }
 }

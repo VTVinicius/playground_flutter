@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:playground_flutter/presentation/feature_canvas/canvas_options_screen.dart';
+import 'package:playground_flutter/presentation/feature_clones/clones_options_screen.dart';
+import 'package:playground_flutter/presentation/feature_games/games_options_screen.dart';
 
 import '../../../uikit/theme/app_colors.dart';
 import '../../feature_experiments/experiements_options_screen.dart';
+import '../../feature_uikit/uikit_options_screen.dart';
 import '../../features_features/features_options_screen.dart';
 import 'features_button.dart';
 
@@ -32,12 +36,10 @@ class HomeButtonsList extends StatelessWidget {
           ),
           FeaturesButton(
             onPressed: () {
-              Fluttertoast.showToast(
-                msg: "Em Breve",
-                toastLength: Toast.LENGTH_SHORT,
-                gravity: ToastGravity.BOTTOM,
-                timeInSecForIosWeb: 1,
-              );
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => const CanvasOptionsScreen())));
             },
             text: "Canvas",
             image: const AssetImage('assets/images/img_canvas.png'),
@@ -49,12 +51,10 @@ class HomeButtonsList extends StatelessWidget {
           ),
           FeaturesButton(
             onPressed: () {
-              Fluttertoast.showToast(
-                msg: "Em Breve",
-                toastLength: Toast.LENGTH_SHORT,
-                gravity: ToastGravity.BOTTOM,
-                timeInSecForIosWeb: 1,
-              );
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => const GamesOptionsScreen())));
             },
             text: "Jogos",
             image: const AssetImage('assets/images/img_jogos.png'),
@@ -66,12 +66,10 @@ class HomeButtonsList extends StatelessWidget {
           ),
           FeaturesButton(
             onPressed: () {
-              Fluttertoast.showToast(
-                msg: "Em Breve",
-                toastLength: Toast.LENGTH_SHORT,
-                gravity: ToastGravity.BOTTOM,
-                timeInSecForIosWeb: 1,
-              );
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => const ClonesOptionsScreen())));
             },
             text: "Clones",
             image: const AssetImage('assets/images/img_clones.png'),
@@ -86,7 +84,7 @@ class HomeButtonsList extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: ((context) => const ExperimentOptionsScreen())));
+                      builder: ((context) => const UikitOptionsScreen())));
             },
             text: "Ui Kit",
             image: const AssetImage('assets/images/img_uikit.png'),
