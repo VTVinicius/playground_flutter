@@ -42,6 +42,7 @@ class _WidgetErrorState<T> extends State<WidgetError<T>> {
       },
     );
   }
+
   Widget _alertDialog(BuildContext context) {
     return Stack(
       children: [
@@ -62,7 +63,9 @@ class _WidgetErrorState<T> extends State<WidgetError<T>> {
         Center(
           child: AlertDialog(
             title: Text('Erro'),
-            content: Text(validateError(widget.response.getErrorOrNull()) ?? widget.error ?? 'Ocorreu um erro'),
+            content: Text(validateError(widget.response.getErrorOrNull()) ??
+                widget.error ??
+                'Ocorreu um erro'),
             actions: [
               TextButton(
                 onPressed: () {
@@ -79,5 +82,3 @@ class _WidgetErrorState<T> extends State<WidgetError<T>> {
     );
   }
 }
-
-
