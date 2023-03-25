@@ -17,8 +17,7 @@ class HistoryViewModel extends ChangeNotifier {
 
   ValueNotifier<HistoryState> get state => _state;
 
-  HistoryViewModel(AddressLocalRepository repository)
-      : _getAllAddressesUseCase = GetAllAddressesUseCase(repository) {
+  HistoryViewModel(this._getAllAddressesUseCase){
     buscarEndereco();
   }
 

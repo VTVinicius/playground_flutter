@@ -7,12 +7,17 @@ import 'package:playground_flutter/data/data_local/datasource/address_local_repo
 import 'package:playground_flutter/data/data_remote/datasource/ViaCepDataSource.dart';
 import 'package:playground_flutter/data/data_remote/repository/address_repository.dart';
 import 'package:playground_flutter/data/data_remote/repository/address_repository_impl.dart';
+import 'package:playground_flutter/domain/usecase/address/get_address_usecase.dart';
+import 'package:playground_flutter/domain/usecase/address/save_address_usecase.dart';
 import 'package:playground_flutter/presentation/features_features/feture_address/address/address_view_model.dart';
 import 'package:playground_flutter/presentation/features_features/feture_address/history/history_viewmodel.dart';
+
+import '../domain/usecase/address/get_all_addresses_usecase.dart';
 
 final getIt = GetIt.instance;
 
 void setupGetIt() {
+  domainModule();
   dataModule();
   repositoryModule();
   viewModelModule();
@@ -38,11 +43,22 @@ void repositoryModule() {
 
 void viewModelModule() {
   getIt.registerFactory<AddressViewModel>(() => AddressViewModel(
-        getIt.get<AddressRepository>(),
-        getIt.get<AddressLocalRepository>(),
+        getIt.get<GetAddressUseCase>(),
+        getIt.get<SaveAddressUseCase>(),
       ));
 
   getIt.registerFactory<HistoryViewModel>(() => HistoryViewModel(
-        getIt.get<AddressLocalRepository>(),
+        getIt.get<GetAllAddressesUseCase>(),
       ));
+}
+
+void domainModule() {
+  getIt.registerFactory<GetAddressUseCase>(
+      () => GetAddressUseCase(getIt<AddressRepository>()));
+
+  getIt.registerFactory<GetAllAddressesUseCase>(
+      () => GetAllAddressesUseCase(getIt<AddressLocalRepository>()));
+
+  getIt.registerFactory<SaveAddressUseCase>(
+      () => SaveAddressUseCase(getIt<AddressLocalRepository>()));
 }

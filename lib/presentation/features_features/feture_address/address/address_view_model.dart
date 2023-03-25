@@ -17,7 +17,9 @@ class AddressViewModel extends ChangeNotifier {
 
   ValueNotifier<CepState> get state => _state;
 
-  AddressViewModel(AddressRepository repository, AddressLocalRepository localRepository): _getAddressUseCase = GetAddressUseCase(repository), _saveAddressUseCase = SaveAddressUseCase(localRepository);
+  // AddressViewModel(AddressRepository repository, AddressLocalRepository localRepository(_getAddressUseCase , _saveAddressUseCase = SaveAddressUseCase(localRepository);
+
+  AddressViewModel(this._getAddressUseCase, this._saveAddressUseCase);
 
   Future<void> buscarEndereco(String cep) async {
     _state.updateState((cepState) => cepState.copyWith(endereco: Loading()));
