@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:playground_flutter/core/base_response.dart';
-import 'package:playground_flutter/data/data_local/datasource/address_local_repository.dart';
-import 'package:playground_flutter/data/data_local/model/address_local.dart';
 import 'package:playground_flutter/domain/usecase/address/get_all_addresses_usecase.dart';
 
-import '../../../../data/data_remote/model/AddressResponse.dart';
-import '../../../../data/data_remote/repository/address_repository.dart';
-import '../../../../domain/usecase/address/get_address_usecase.dart';
 import 'HisotryState.dart';
 
 class HistoryViewModel extends ChangeNotifier {
@@ -17,7 +12,7 @@ class HistoryViewModel extends ChangeNotifier {
 
   ValueNotifier<HistoryState> get state => _state;
 
-  HistoryViewModel(this._getAllAddressesUseCase){
+  HistoryViewModel(this._getAllAddressesUseCase) {
     buscarEndereco();
   }
 
@@ -25,8 +20,8 @@ class HistoryViewModel extends ChangeNotifier {
     _state.updateState((cepState) => cepState.copyWith(endereco: Loading()));
     _getAllAddressesUseCase.invoke(
       onSuccess: (resultado) {
-        _state.updateState((historyState) => historyState.copyWith(
-            endereco: Success(value: resultado as List<AddressLocal?>)));
+        _state.updateState((historyState) =>
+            historyState.copyWith(endereco: Success(value: resultado)));
         notifyListeners();
       },
       onError: (erro) {

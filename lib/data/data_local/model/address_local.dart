@@ -5,7 +5,13 @@ class AddressLocal {
   final String bairro;
   final String rua;
 
-  AddressLocal({required this.cep, required this.cidade, required this.uf, required this.bairro, required this.rua});
+  AddressLocal(
+      {required this.cep,
+      required this.cidade,
+      required this.uf,
+      required this.bairro,
+      required this.rua});
+
   Map<String, dynamic> toMap() {
     return {
       'cep': cep,
@@ -15,7 +21,6 @@ class AddressLocal {
       'rua': rua,
     };
   }
-
 
   factory AddressLocal.fromMap(Map<String, dynamic> map) {
     return AddressLocal(

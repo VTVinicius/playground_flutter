@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../uikit/theme/app_colors.dart';
@@ -11,37 +10,37 @@ class CanvasOptionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       appBar: CustomAppBar(
           titleText: 'Canvas',
           textColor: AppColors.blueCanvasDark,
-          backgroundColor: AppColors.blueCanvasLight
-      ),
+          backgroundColor: AppColors.blueCanvasLight),
       body: Container(
         alignment: Alignment.center,
         child: SingleChildScrollView(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                OptionsCustomButton(
-                  onPressed: () {},
-                  text: "Em Breve",
-                  buttonColor: AppColors.blueCanvasLight,
-                  textColor: AppColors.blueCanvasDark,
-                ),
-                OptionsCustomButton(
-                  onPressed: () {},
-                  text: "Em Breve",
-                  buttonColor: AppColors.blueCanvasLight,
-                  textColor: AppColors.blueCanvasDark,
-                ),
-                OptionsCustomButton(
-                  onPressed: () {},
-                  text: "Em Breve",
-                  buttonColor: AppColors.blueCanvasLight,
-                  textColor: AppColors.blueCanvasDark,
-                ),
-              ],
-            )),
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            OptionsCustomButton(
+              onPressed: () {},
+              text: "Em Breve",
+              buttonColor: AppColors.blueCanvasLight,
+              textColor: AppColors.blueCanvasDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {},
+              text: "Em Breve",
+              buttonColor: AppColors.blueCanvasLight,
+              textColor: AppColors.blueCanvasDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {},
+              text: "Em Breve",
+              buttonColor: AppColors.blueCanvasLight,
+              textColor: AppColors.blueCanvasDark,
+            ),
+          ],
+        )),
       ),
     );
   }

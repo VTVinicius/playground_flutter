@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:playground_flutter/core/base_response.dart';
-import 'package:playground_flutter/data/data_local/datasource/address_local_repository.dart';
-import 'package:playground_flutter/presentation/features_features/feture_address/history/history_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/error_widget.dart';
+import '../../../../uikit/theme/app_colors.dart';
+import '../../../../uikit/widgets/app_bar/custom_app_bar.dart';
+import 'history_viewmodel.dart';
 
 class HistoryScreen extends StatefulWidget {
   const HistoryScreen({Key? key}) : super(key: key);
@@ -27,7 +28,12 @@ class _MyHistoryScreen extends State<HistoryScreen> {
           return Stack(
             children: [
               Scaffold(
-                appBar: AppBar(title: const Text('Tela de Endereço Teste')),
+                backgroundColor: AppColors.background,
+                appBar: CustomAppBar(
+                  backgroundColor: AppColors.greenFeatures,
+                  textColor: AppColors.greenFeaturesDark,
+                  titleText: "Histórico de Pesquisa",
+                ),
                 body: SingleChildScrollView(
                   child: Column(
                     children: [],

@@ -9,10 +9,10 @@ import 'package:playground_flutter/data/data_remote/repository/address_repositor
 import 'package:playground_flutter/data/data_remote/repository/address_repository_impl.dart';
 import 'package:playground_flutter/domain/usecase/address/get_address_usecase.dart';
 import 'package:playground_flutter/domain/usecase/address/save_address_usecase.dart';
-import 'package:playground_flutter/presentation/features_features/feture_address/address/address_view_model.dart';
-import 'package:playground_flutter/presentation/features_features/feture_address/history/history_viewmodel.dart';
 
 import '../domain/usecase/address/get_all_addresses_usecase.dart';
+import '../presentation/features_features/feature_address/address/address_view_model.dart';
+import '../presentation/features_features/feature_address/history/history_viewmodel.dart';
 
 final getIt = GetIt.instance;
 

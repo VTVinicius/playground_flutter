@@ -25,7 +25,6 @@ class FeaturesButton extends StatelessWidget {
         style: TextButton.styleFrom(
           backgroundColor: buttonColor,
           elevation: 10,
-
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(
                   6) // Estilize o botão conforme necessário

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../uikit/theme/app_colors.dart';
@@ -11,37 +10,37 @@ class GamesOptionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       appBar: CustomAppBar(
           titleText: 'Jogos',
           textColor: AppColors.yellowGamesDark,
-          backgroundColor: AppColors.yellowGamesLight
-      ),
+          backgroundColor: AppColors.yellowGamesLight),
       body: Container(
         alignment: Alignment.center,
         child: SingleChildScrollView(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                OptionsCustomButton(
-                  onPressed: () {},
-                  text: "Em Breve",
-                  buttonColor: AppColors.yellowGamesLight,
-                  textColor: AppColors.yellowGamesDark,
-                ),
-                OptionsCustomButton(
-                  onPressed: () {},
-                  text: "Em Breve",
-                  buttonColor: AppColors.yellowGamesLight,
-                  textColor: AppColors.yellowGamesDark,
-                ),
-                OptionsCustomButton(
-                  onPressed: () {},
-                  text: "Em Breve",
-                  buttonColor: AppColors.yellowGamesLight,
-                  textColor: AppColors.yellowGamesDark,
-                ),
-              ],
-            )),
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            OptionsCustomButton(
+              onPressed: () {},
+              text: "Em Breve",
+              buttonColor: AppColors.yellowGamesLight,
+              textColor: AppColors.yellowGamesDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {},
+              text: "Em Breve",
+              buttonColor: AppColors.yellowGamesLight,
+              textColor: AppColors.yellowGamesDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {},
+              text: "Em Breve",
+              buttonColor: AppColors.yellowGamesLight,
+              textColor: AppColors.yellowGamesDark,
+            ),
+          ],
+        )),
       ),
     );
   }

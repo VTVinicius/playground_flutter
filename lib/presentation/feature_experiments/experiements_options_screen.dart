@@ -10,11 +10,11 @@ class ExperimentOptionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       appBar: CustomAppBar(
-        titleText: 'Experimentos',
-        textColor: AppColors.greenExperimentsDark,
-        backgroundColor: AppColors.greenExperimentsLight
-      ),
+          titleText: 'Experimentos',
+          textColor: AppColors.greenExperimentsDark,
+          backgroundColor: AppColors.greenExperimentsLight),
       body: Container(
         alignment: Alignment.center,
         child: SingleChildScrollView(

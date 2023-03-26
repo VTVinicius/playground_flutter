@@ -1,9 +1,8 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:playground_flutter/presentation/feature_home/widgets/home_buttons_list.dart';
 import 'package:playground_flutter/presentation/feature_home/widgets/home_top_bar.dart';
 import 'package:playground_flutter/presentation/feature_home/widgets/projects_list.dart';
+
 import 'data/data_local/database/database_helper.dart';
 import 'di/setup_get_it.dart';
 
@@ -19,7 +18,7 @@ void main() async {
   setupGetIt();
 
   runApp(
-    await const MyApp(),
+    const MyApp(),
   );
 }
 
@@ -51,13 +50,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: SingleChildScrollView(
+    return WillPopScope(
+      onWillPop: () async {
+        // Desabilitar o botão de voltar para não fechar o aplicativo
+        return false; // Retorne 'false' para impedir que o aplicativo seja fechado
+      },
+      child: Scaffold(
+        body: SingleChildScrollView(
           child: Column(
             children: [
-              TopBarHome(),
-              SizedBox(height: 42),
+              const TopBarHome(),
+              const SizedBox(height: 42),
               Row(children: const [
                 Padding(
                   padding: EdgeInsets.only(left: 16.0),
@@ -67,9 +70,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
                 ),
               ]),
-              SizedBox(height: 16),
-              ProjectsList(),
-              SizedBox(height: 32),
+              const SizedBox(height: 16),
+              const ProjectsList(),
+              const SizedBox(height: 32),
               Row(children: const [
                 Padding(
                   padding: EdgeInsets.only(left: 16.0),
@@ -79,9 +82,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
                 ),
               ]),
-              SizedBox(height: 16),
-              HomeButtonsList(),
-              SizedBox(height: 32)
+              const SizedBox(height: 16),
+              const HomeButtonsList(),
+              const SizedBox(height: 32)
             ],
           ),
         ),

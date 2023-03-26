@@ -1,4 +1,3 @@
-
 import 'package:playground_flutter/data/data_local/datasource/address_local_repository.dart';
 import 'package:playground_flutter/data/data_remote/model/AddressResponse.dart';
 
@@ -29,7 +28,8 @@ class SaveAddressUseCase extends UseCase<void, SaveAddressParam> {
   }
 
   static AddressLocal fromAddressResponse(AddressResponse response) {
-    return AddressLocal(// Defina um ID padrão ou passe como parâmetro se necessário
+    return AddressLocal(
+      // Defina um ID padrão ou passe como parâmetro se necessário
       cep: response.cep,
       cidade: response.localidade,
       uf: response.uf,

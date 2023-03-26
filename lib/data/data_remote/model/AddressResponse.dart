@@ -36,6 +36,4 @@ class AddressResponse {
       siafi: json['siafi'],
     );
   }
-
-
 }

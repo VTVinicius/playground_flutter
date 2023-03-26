@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../uikit/theme/app_colors.dart';
@@ -11,37 +10,37 @@ class ClonesOptionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background,
       appBar: CustomAppBar(
           titleText: 'Clones',
           textColor: AppColors.redClonesDark,
-          backgroundColor: AppColors.redClonesLight
-      ),
+          backgroundColor: AppColors.redClonesLight),
       body: Container(
         alignment: Alignment.center,
         child: SingleChildScrollView(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                OptionsCustomButton(
-                  onPressed: () {},
-                  text: "Em Breve",
-                  buttonColor: AppColors.redClonesLight,
-                  textColor: AppColors.redClonesDark,
-                ),
-                OptionsCustomButton(
-                  onPressed: () {},
-                  text: "Em Breve",
-                  buttonColor: AppColors.redClonesLight,
-                  textColor: AppColors.redClonesDark,
-                ),
-                OptionsCustomButton(
-                  onPressed: () {},
-                  text: "Em Breve",
-                  buttonColor: AppColors.redClonesLight,
-                  textColor: AppColors.redClonesDark,
-                ),
-              ],
-            )),
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            OptionsCustomButton(
+              onPressed: () {},
+              text: "Em Breve",
+              buttonColor: AppColors.redClonesLight,
+              textColor: AppColors.redClonesDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {},
+              text: "Em Breve",
+              buttonColor: AppColors.redClonesLight,
+              textColor: AppColors.redClonesDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {},
+              text: "Em Breve",
+              buttonColor: AppColors.redClonesLight,
+              textColor: AppColors.redClonesDark,
+            ),
+          ],
+        )),
       ),
     );
   }

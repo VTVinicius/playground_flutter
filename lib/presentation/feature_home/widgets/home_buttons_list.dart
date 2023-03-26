@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:playground_flutter/presentation/feature_canvas/canvas_options_screen.dart';
 import 'package:playground_flutter/presentation/feature_clones/clones_options_screen.dart';
 import 'package:playground_flutter/presentation/feature_games/games_options_screen.dart';

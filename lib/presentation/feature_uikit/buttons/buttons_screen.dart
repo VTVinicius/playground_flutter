@@ -1,14 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:playground_flutter/uikit/theme/app_colors.dart';
+
+import '../../../uikit/widgets/app_bar/custom_app_bar.dart';
 
 class ButtonsScreen extends StatelessWidget {
   const ButtonsScreen({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Tela de Botões')),
+      backgroundColor: AppColors.background,
+      appBar: CustomAppBar(
+          titleText: 'Tela de Botões',
+          textColor: AppColors.purpleUikitDark,
+          backgroundColor: AppColors.purpleUikitLight),
       body: Container(
           alignment: Alignment.center,
           child: Column(
@@ -38,4 +44,3 @@ class ButtonsScreen extends StatelessWidget {
     );
   }
 }
-

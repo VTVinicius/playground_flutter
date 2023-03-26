@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:playground_flutter/core/base_response.dart';
-import 'package:playground_flutter/presentation/features_features/feture_address/history/history_sceen.dart';
+import 'package:playground_flutter/uikit/theme/app_colors.dart';
+import 'package:playground_flutter/uikit/widgets/app_bar/custom_app_bar.dart';
+import 'package:playground_flutter/uikit/widgets/buttons/options_custom_button.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/error_widget.dart';
-import '../../../../data/data_local/datasource/address_local_repository.dart';
-import '../../../../data/data_remote/repository/address_repository.dart';
-import '../../../../uikit/widgets/buttons/MyCupertinoButton.dart';
+import '../history/history_sceen.dart';
 import 'address_view_model.dart';
 
 class AddressScreen extends StatefulWidget {
@@ -31,7 +31,12 @@ class _MyAddressScreen extends State<AddressScreen> {
           return Stack(
             children: [
               Scaffold(
-                appBar: AppBar(title: const Text('Tela de Endereço Teste')),
+                backgroundColor: AppColors.background,
+                appBar: CustomAppBar(
+                  backgroundColor: AppColors.greenFeatures,
+                  textColor: AppColors.greenFeaturesDark,
+                  titleText: "Pesquisa de Endereço",
+                ),
                 body: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -58,14 +63,17 @@ class _MyAddressScreen extends State<AddressScreen> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           _TextFields(viewModel),
-                          MyCupertinoButton(
+                          OptionsCustomButton(
                             onPressed: () {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: ((context) => const HistoryScreen())));
+                                      builder: ((context) =>
+                                          const HistoryScreen())));
                             },
                             text: "Historico",
+                            buttonColor: AppColors.greenFeatures,
+                            textColor: AppColors.greenFeaturesDark,
                           ),
                         ],
                       ),

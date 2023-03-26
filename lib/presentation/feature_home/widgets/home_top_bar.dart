@@ -12,7 +12,7 @@ class TopBarHome extends StatelessWidget {
       width: double.infinity,
       decoration: BoxDecoration(
         color: AppColors.greenApp,
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(20),
           bottomRight: Radius.circular(20),
         ),

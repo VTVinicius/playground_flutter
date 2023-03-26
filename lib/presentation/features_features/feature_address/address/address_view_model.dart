@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:playground_flutter/core/base_response.dart';
 import 'package:playground_flutter/domain/usecase/address/save_address_usecase.dart';
 
-import '../../../../data/data_local/datasource/address_local_repository.dart';
 import '../../../../data/data_remote/model/AddressResponse.dart';
-import '../../../../data/data_remote/repository/address_repository.dart';
 import '../../../../domain/usecase/address/get_address_usecase.dart';
 import 'address_state.dart';
 
@@ -16,8 +14,6 @@ class AddressViewModel extends ChangeNotifier {
       ValueNotifier<CepState>(CepState(endereco: Waiting(), saveAddress: null));
 
   ValueNotifier<CepState> get state => _state;
-
-  // AddressViewModel(AddressRepository repository, AddressLocalRepository localRepository(_getAddressUseCase , _saveAddressUseCase = SaveAddressUseCase(localRepository);
 
   AddressViewModel(this._getAddressUseCase, this._saveAddressUseCase);
 

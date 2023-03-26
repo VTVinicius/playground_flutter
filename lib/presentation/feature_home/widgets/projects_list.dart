@@ -12,9 +12,7 @@ class ProjectsList extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-
           const SizedBox(width: 16),
-
           ItemsCarousel(
             backgroundColor: Colors.transparent,
             imagePath: "assets/images/img_logo_havan.png",
@@ -24,9 +22,7 @@ class ProjectsList extends StatelessWidget {
               );
             },
           ),
-
           const SizedBox(width: 16),
-
           ItemsCarousel(
             backgroundColor: AppColors.yellowRiHappy,
             imagePath: "assets/images/img_logo_rihappy.png",
@@ -36,9 +32,7 @@ class ProjectsList extends StatelessWidget {
               );
             },
           ),
-
           const SizedBox(width: 16),
-
           ItemsCarousel(
             backgroundColor: AppColors.orangeLeve,
             imagePath: "assets/images/img_logo_leve.png",
@@ -48,7 +42,6 @@ class ProjectsList extends StatelessWidget {
               );
             },
           ),
-
           const SizedBox(width: 16),
         ],
       ),
@@ -61,7 +54,8 @@ class ItemsCarousel extends StatelessWidget {
   final String imagePath;
   final VoidCallback onClick;
 
-  ItemsCarousel({
+  const ItemsCarousel({
+    super.key,
     required this.backgroundColor,
     required this.imagePath,
     required this.onClick,

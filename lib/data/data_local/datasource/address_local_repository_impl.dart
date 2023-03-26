@@ -1,4 +1,3 @@
-
 import '../database/AddressDAO.dart';
 import '../model/address_local.dart';
 import 'address_local_repository.dart';
@@ -10,11 +9,11 @@ class AddressLocalRepositoryImpl extends AddressLocalRepository {
 
   @override
   Future<List<AddressLocal?>> getAddress() async {
-   return await addressDAO.getAllAddresses();
+    return await addressDAO.getAllAddresses();
   }
 
   @override
   Future saveAddress(AddressLocal address) async {
-   return await addressDAO.insertAddress(address);
+    return await addressDAO.insertAddress(address);
   }
 }

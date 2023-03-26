@@ -28,12 +28,16 @@ extension MutableStateFlowNullableExtensions<T> on ValueNotifier<T?> {
 
 extension AsyncExtensions<T> on BaseResponse<T> {
   BaseResponse<T> updateSuccessState(T Function(T) reducer) {
-    return this is Success<T> ? Success(value: reducer((this as Success<T>).value)) : this;
+    return this is Success<T>
+        ? Success(value: reducer((this as Success<T>).value))
+        : this;
   }
 
-  T? asSuccessOrNull() => this is Success<T> ? (this as Success<T>).value : null;
+  T? asSuccessOrNull() =>
+      this is Success<T> ? (this as Success<T>).value : null;
 }
 
 extension ErrorExtensions<T> on BaseResponse<T> {
-  Object? getErrorOrNull() => this is Error<T> ? (this as Error<T>).error : null;
+  Object? getErrorOrNull() =>
+      this is Error<T> ? (this as Error<T>).error : null;
 }

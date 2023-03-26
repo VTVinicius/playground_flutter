@@ -2,8 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:playground_flutter/core/base_response.dart';
-import 'package:playground_flutter/uikit/widgets/loading.dart';
 import 'package:playground_flutter/domain/core/error_validator.dart';
+import 'package:playground_flutter/uikit/widgets/loading.dart';
 
 typedef ContentBuilder<T> = Widget Function(BuildContext context, T value);
 typedef ErrorBuilder = Widget Function(BuildContext context);
