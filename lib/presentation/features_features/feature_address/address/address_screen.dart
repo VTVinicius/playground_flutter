@@ -87,6 +87,10 @@ class _MyAddressScreen extends State<AddressScreen> {
                 response: viewModel.state.value.endereco,
                 error: "Não foi possível encontrar o endereço",
               ),
+              WidgetError(
+                response: viewModel.state.value.saveAddress,
+                error: "Não foi possível Salvar o endereço",
+              ),
             ],
           );
         },

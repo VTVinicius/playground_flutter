@@ -11,7 +11,7 @@ class AddressViewModel extends ChangeNotifier {
   final SaveAddressUseCase _saveAddressUseCase;
 
   final ValueNotifier<CepState> _state =
-      ValueNotifier<CepState>(CepState(endereco: Waiting(), saveAddress: null));
+      ValueNotifier<CepState>(CepState(endereco: Waiting(), saveAddress: Waiting()));
 
   ValueNotifier<CepState> get state => _state;
 
@@ -43,6 +43,8 @@ class AddressViewModel extends ChangeNotifier {
         notifyListeners();
       },
       onError: (erro) {
+        _state.updateState(
+                (cepState) => cepState.copyWith(saveAddress: Error(error: erro)));
         notifyListeners();
       },
     );

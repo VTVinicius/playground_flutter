@@ -9,7 +9,7 @@ class GetAllAddressesUseCase extends UseCase<List<AddressLocal?>, void> {
   const GetAllAddressesUseCase(this.repository);
 
   @override
-  Future<List<AddressLocal?>> run(params) {
+  Future<List<AddressLocal?>> run(void params) {
     return repository.getAddress();
   }
 }

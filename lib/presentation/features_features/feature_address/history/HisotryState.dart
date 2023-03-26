@@ -10,7 +10,7 @@ class HistoryState {
   });
 
   HistoryState copyWith({
-    BaseResponse<List<AddressLocal?>>? endereco,
+    BaseResponse<List<AddressLocal?>> ? endereco,
     bool? saveAddress,
   }) {
     return HistoryState(

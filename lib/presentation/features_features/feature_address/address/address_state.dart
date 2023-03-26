@@ -4,16 +4,16 @@ import 'package:playground_flutter/data/data_remote/model/AddressResponse.dart';
 
 class CepState {
   BaseResponse<AddressResponse?> endereco;
-  bool? saveAddress;
+  BaseResponse<bool?> saveAddress;
 
   CepState({
     required this.endereco,
-    this.saveAddress,
+    required this.saveAddress,
   });
 
   CepState copyWith({
     BaseResponse<AddressResponse>? endereco,
-    bool? saveAddress,
+    BaseResponse<bool?> ? saveAddress,
   }) {
     return CepState(
       endereco: endereco ?? this.endereco,

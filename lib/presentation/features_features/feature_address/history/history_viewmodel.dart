@@ -17,8 +17,9 @@ class HistoryViewModel extends ChangeNotifier {
   }
 
   Future<void> buscarEndereco() async {
-    _state.updateState((cepState) => cepState.copyWith(endereco: Loading()));
+    _state.updateState((historyState) => historyState.copyWith(endereco: Loading()));
     _getAllAddressesUseCase.invoke(
+      params: null,
       onSuccess: (resultado) {
         _state.updateState((historyState) =>
             historyState.copyWith(endereco: Success(value: resultado)));

@@ -36,24 +36,22 @@ class _MyHistoryScreen extends State<HistoryScreen> {
                 ),
                 body: SingleChildScrollView(
                   child: Column(
-                    children: [],
+                    children: [
+                      if (viewModel.state.value.endereco.asSuccessOrNull()?.first?.cep != null)
+                        for (var i = 0; i <= viewModel.state.value.endereco.asSuccessOrNull()!.length; i++)
+                          Text(viewModel.state.value.endereco
+                              .asSuccessOrNull()![i]
+                              ?.cep ??
+                              ""),
+
+                    ],
                   ),
                 ),
               ),
-              if (viewModel.state.value.endereco.asSuccessOrNull() != null)
-                for (var i = 0;
-                    i <
-                        viewModel.state.value.endereco
-                            .asSuccessOrNull()!
-                            .length;
-                    i++)
-                  Text(viewModel.state.value.endereco
-                          .asSuccessOrNull()![i]
-                          ?.cep ??
-                      ""),
+
               WidgetError(
                 response: viewModel.state.value.endereco,
-                error: "Não foi possível encontrar o endereço",
+                error: "Não foi possível encontrar a lista de Endereços",
               ),
             ],
           );
