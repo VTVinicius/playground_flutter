@@ -2,8 +2,6 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../model/address_local.dart';
-
 class DatabaseHelper {
   static const _databaseName = "AddressDB.db";
   static const _databaseVersion = 1;
@@ -43,52 +41,51 @@ class DatabaseHelper {
           ''');
   }
 
-  Future<void> insertAddress(AddressLocal address) async {
-    final Database db = await _db;
-    await db.insert(
+  Future<void> insertAddress(Map<String, dynamic> address) async {
+    await _db.insert(
       table,
-      address.toMap(),
+      address,
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
 
-  Future<List<AddressLocal?>> getAllAddresses() async {
-    final Database db = await _db;
-    final List<Map<String, dynamic>> maps = await db.query(table);
-
-    return List.generate(maps.length, (i) {
-      return AddressLocal.fromMap(maps[i]);
-    });
-  }
-
-  Future<int> insert(Map<String, dynamic> row) async {
-    return await _db.insert(table, row);
-  }
-
-  Future<List<Map<String, dynamic>>> queryAllRows() async {
-    return await _db.query(table);
-  }
-
-  Future<int> queryRowCount() async {
-    final results = await _db.rawQuery('SELECT * FROM $table');
-    return Sqflite.firstIntValue(results) ?? 0;
-  }
-
-  Future<int> update(Map<String, dynamic> row) async {
-    String cep = row[columnCEP];
-    return await _db.update(
+  // Atualizar um endereço existente no banco de dados
+  Future<void> updateAddress(Map<String, dynamic> address) async {
+    await _db.update(
       table,
-      row,
+      address,
       where: '$columnCEP = ?',
-      whereArgs: [cep],
+      whereArgs: [address[columnCEP]],
     );
   }
 
-  Future<int> delete(String cep) async {
-    return await _db.delete(
+  // Deletar um endereço do banco de dados
+  Future<void> deleteAddress(String cep) async {
+    await _db.delete(
       table,
       where: '$columnCEP = ?',
       whereArgs: [cep],
     );
+  }
+
+  // Recuperar todos os endereços do banco de dados
+  Future<List<Map<String, dynamic>>> getAllAddresses() async {
+    final List<Map<String, dynamic>> maps = await _db.query(table);
+    return maps;
+  }
+
+  // Recuperar um endereço específico do banco de dados pelo CEP
+  Future<Map<String, dynamic>?> getAddressByCep(String cep) async {
+    final List<Map<String, dynamic>> maps = await _db.query(
+      table,
+      where: '$columnCEP = ?',
+      whereArgs: [cep],
+    );
+
+    if (maps.isNotEmpty) {
+      return maps.first;
+    } else {
+      return null;
+    }
   }
 }

@@ -12,7 +12,8 @@ class AddressLocal {
       required this.bairro,
       required this.rua});
 
-  Map<String, dynamic> toMap() {
+  // Método para converter AddressLocal para Map<String, dynamic>
+  Map<String, dynamic> toJson() {
     return {
       'cep': cep,
       'cidade': cidade,
@@ -22,13 +23,11 @@ class AddressLocal {
     };
   }
 
-  factory AddressLocal.fromMap(Map<String, dynamic> map) {
-    return AddressLocal(
-      cep: map['cep'],
-      cidade: map['cidade'],
-      uf: map['uf'],
-      bairro: map['bairro'],
-      rua: map['rua'],
-    );
-  }
+  // Construtor para converter Map<String, dynamic> para AddressLocal
+  AddressLocal.fromJson(Map<String, dynamic> json)
+      : cep = json['cep'],
+        cidade = json['cidade'],
+        uf = json['uf'],
+        bairro = json['bairro'],
+        rua = json['rua'];
 }
