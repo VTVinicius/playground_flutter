@@ -33,11 +33,11 @@ class DatabaseHelper {
     await db.execute('''
           CREATE TABLE $table (
             $columnCEP TEXT PRIMARY KEY,
-            $columnCidade TEXT NOT NULL,
-            $columnUF TEXT NOT NULL,
-            $columnBairro TEXT NOT NULL,
-            $columnRua TEXT NOT NULL
-          )
+            $columnCidade TEXT,
+            $columnUF TEXT,
+            $columnBairro TEXT,
+            $columnRua TEXT 
+          );
           ''');
   }
 
