@@ -6,16 +6,15 @@ import 'package:playground_flutter/presentation/feature_home/widgets/projects_li
 import 'data/data_local/database/database_helper.dart';
 import 'di/setup_get_it.dart';
 
-Future<void> initDatabase() async {
-  final dbHelper = DatabaseHelper();
-  await dbHelper.init();
-}
+
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
 
-  initDatabase();
+  WidgetsFlutterBinding.ensureInitialized();
   setupGetIt();
+  
+ final dbHelper = getIt<DatabaseHelper>();
+  await dbHelper.init();
 
   runApp(
     const MyApp(),

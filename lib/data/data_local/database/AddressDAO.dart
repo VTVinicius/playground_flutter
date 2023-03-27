@@ -10,18 +10,16 @@ class AddressDAO {
   final DatabaseHelper databaseHelper;
 
   Future<List<AddressLocal>> getAllAddresses() async {
-    final List<Map<String, dynamic>> response =
+    final List<AddressLocal> response =
         await databaseHelper.getAllAddresses();
 
     // Mapear a lista de objetos Map<String, dynamic> para uma lista de objetos AddressLocal usando o construtor fromJson
-    List<AddressLocal> addresses =
-        response.map((json) => AddressLocal.fromJson(json)).toList();
 
-    return addresses;
+    return response;
   }
 
   Future insertAddress(AddressLocal address) async {
-    final response = await databaseHelper.insertAddress(address.toJson());
+    final response = await databaseHelper.insertAddress(address);
 
     return response;
   }

@@ -2,8 +2,10 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
+import '../model/address_local.dart';
+
 class DatabaseHelper {
-  static const _databaseName = "AddressDB.db";
+  static const _databaseName = "addressDB.db";
   static const _databaseVersion = 1;
 
   static const table = 'address_table';
@@ -15,9 +17,23 @@ class DatabaseHelper {
   static const columnBairro = 'bairro';
   static const columnRua = 'rua';
 
-  late Database _db;
 
-// this opens the database (and creates it if it doesn't exist)
+  Database? _db;
+  Database get db {
+    if (_db != null) {
+      return _db!;
+    } else {
+      throw Exception("The database has not been initialized.");
+    }
+  }
+
+  // Private constructor to prevent direct instantiation
+  DatabaseHelper._();
+
+  // Singleton instance
+  static final DatabaseHelper instance = DatabaseHelper._();
+
+  // Initialize the database
   Future<void> init() async {
     final documentsDirectory = await getApplicationDocumentsDirectory();
     final path = join(documentsDirectory.path, _databaseName);
@@ -28,7 +44,7 @@ class DatabaseHelper {
     );
   }
 
-// SQL code to create the database table
+  // SQL code to create the database table
   Future _onCreate(Database db, int version) async {
     await db.execute('''
           CREATE TABLE $table (
@@ -40,28 +56,28 @@ class DatabaseHelper {
           );
           ''');
   }
-
-  Future<void> insertAddress(Map<String, dynamic> address) async {
-    await _db.insert(
+  
+  Future<void> insertAddress(AddressLocal address) async {
+    await db.insert(
       table,
-      address,
+      address.toJson(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
 
   // Atualizar um endereço existente no banco de dados
-  Future<void> updateAddress(Map<String, dynamic> address) async {
-    await _db.update(
+  Future<void> updateAddress(AddressLocal address) async {
+    await db.update(
       table,
-      address,
+      address.toJson(),
       where: '$columnCEP = ?',
-      whereArgs: [address[columnCEP]],
+      whereArgs: [address.toJson()[columnCEP]],
     );
   }
 
   // Deletar um endereço do banco de dados
   Future<void> deleteAddress(String cep) async {
-    await _db.delete(
+    await db.delete(
       table,
       where: '$columnCEP = ?',
       whereArgs: [cep],
@@ -69,14 +85,14 @@ class DatabaseHelper {
   }
 
   // Recuperar todos os endereços do banco de dados
-  Future<List<Map<String, dynamic>>> getAllAddresses() async {
-    final List<Map<String, dynamic>> maps = await _db.query(table);
-    return maps;
+  Future<List<AddressLocal>> getAllAddresses() async {
+    final results = await db.query(table);
+    return results.map((json) => AddressLocal.fromJson(json)).toList();
   }
 
   // Recuperar um endereço específico do banco de dados pelo CEP
   Future<Map<String, dynamic>?> getAddressByCep(String cep) async {
-    final List<Map<String, dynamic>> maps = await _db.query(
+    final List<Map<String, dynamic>> maps = await db.query(
       table,
       where: '$columnCEP = ?',
       whereArgs: [cep],

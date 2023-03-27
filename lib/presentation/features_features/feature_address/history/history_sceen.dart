@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:playground_flutter/core/base_response.dart';
+import 'package:playground_flutter/presentation/features_features/feature_address/history/widgets/address_card.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/error_widget.dart';
@@ -14,7 +15,6 @@ class HistoryScreen extends StatefulWidget {
   @override
   State<HistoryScreen> createState() => _MyHistoryScreen();
 }
-
 class _MyHistoryScreen extends State<HistoryScreen> {
   var titulo = "Bem Vindo";
   var cep = "Pesquisar CEP";
@@ -37,18 +37,53 @@ class _MyHistoryScreen extends State<HistoryScreen> {
                 body: SingleChildScrollView(
                   child: Column(
                     children: [
-                      if (viewModel.state.value.endereco.asSuccessOrNull()?.first?.cep != null)
-                        for (var i = 0; i <= viewModel.state.value.endereco.asSuccessOrNull()!.length; i++)
-                          Text(viewModel.state.value.endereco
-                              .asSuccessOrNull()![i]
-                              ?.cep ??
-                              ""),
 
+                      const SizedBox(height: 16),
+
+                      if (viewModel.state.value.endereco
+                          .asSuccessOrNull()
+                          ?.first
+                          ?.cep !=
+                          null)
+                        ListView.builder(
+                          shrinkWrap: true, // Adicione esta linha
+                          physics:
+                          NeverScrollableScrollPhysics(), // Adicione esta linha
+                          itemCount: viewModel.state.value.endereco
+                              .asSuccessOrNull()
+                              ?.length,
+                          itemBuilder: (context, index) {
+                            return Column(
+                              children: [
+                                AddressCard(
+                                  zipCode: viewModel.state.value.endereco
+                                      .asSuccessOrNull()?[index]
+                                      ?.cep,
+                                  uf: viewModel.state.value.endereco
+                                      .asSuccessOrNull()?[index]
+                                      ?.uf,
+                                  city: viewModel.state.value.endereco
+                                      .asSuccessOrNull()?[index]
+                                      ?.cidade,
+                                  neighborhood: viewModel.state.value.endereco
+                                      .asSuccessOrNull()?[index]
+                                      ?.bairro,
+                                  address: viewModel.state.value.endereco
+                                      .asSuccessOrNull()?[index]
+                                      ?.rua,
+                                ),
+                              ],
+
+                            );
+                          },
+                        )
+                      else
+                        const SizedBox.shrink(),
+                      const SizedBox(height: 16),
                     ],
                   ),
                 ),
               ),
-
               WidgetError(
                 response: viewModel.state.value.endereco,
                 error: "Não foi possível encontrar a lista de Endereços",

@@ -40,6 +40,8 @@ class AddressViewModel extends ChangeNotifier {
     _saveAddressUseCase.invoke(
       params: SaveAddressParam(address),
       onSuccess: (resultado) {
+        _state.updateState(
+                (cepState) => cepState.copyWith(endereco: Success(value: address)));
         notifyListeners();
       },
       onError: (erro) {

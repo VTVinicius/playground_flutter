@@ -24,11 +24,12 @@ void setupGetIt() {
 }
 
 void dataModule() {
+
+ getIt.registerSingleton<DatabaseHelper>(DatabaseHelper.instance);
   getIt.registerSingleton<NetworkManager>(NetworkManager());
-  getIt.registerSingleton<DatabaseHelper>(DatabaseHelper());
 
   getIt.registerSingleton<ViaCepDataSource>(ViaCepDataSource(NetworkManager()));
-  getIt.registerSingleton<AddressDAO>(AddressDAO(DatabaseHelper()));
+  getIt.registerSingleton<AddressDAO>(AddressDAO(DatabaseHelper.instance));
 }
 
 void repositoryModule() {
@@ -38,7 +39,7 @@ void repositoryModule() {
       viaCepDataSource: ViaCepDataSource(NetworkManager())));
 
   getIt.registerSingleton<AddressLocalRepository>(
-      AddressLocalRepositoryImpl(addressDAO: AddressDAO(DatabaseHelper())));
+      AddressLocalRepositoryImpl(addressDAO: AddressDAO(DatabaseHelper.instance)));
 }
 
 void viewModelModule() {
