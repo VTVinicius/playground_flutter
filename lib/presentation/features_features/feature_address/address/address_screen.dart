@@ -63,7 +63,6 @@ class _MyAddressScreen extends State<AddressScreen> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           _TextFields(viewModel),
-
                           OptionsCustomButton(
                             onPressed: () {
                               Navigator.push(
@@ -170,9 +169,8 @@ Widget _TextFields(AddressViewModel viewModel) {
         TextField(
           decoration: InputDecoration(
             border: OutlineInputBorder(),
-            hintText:
-                viewModel.state.value.lastCep.asSuccessOrNull() ??
-                    'Nenhum CEP pesquisado Recentemente',
+            hintText: viewModel.state.value.lastCep.asSuccessOrNull() ??
+                'Nenhum CEP pesquisado Recentemente',
           ),
           readOnly: true,
         ),
