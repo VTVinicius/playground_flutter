@@ -63,6 +63,7 @@ class _MyAddressScreen extends State<AddressScreen> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           _TextFields(viewModel),
+
                           OptionsCustomButton(
                             onPressed: () {
                               Navigator.push(
@@ -75,6 +76,7 @@ class _MyAddressScreen extends State<AddressScreen> {
                             buttonColor: AppColors.greenFeatures,
                             textColor: AppColors.greenFeaturesDark,
                           ),
+                          const SizedBox(height: 32),
                         ],
                       ),
                     ],
@@ -159,6 +161,18 @@ Widget _TextFields(AddressViewModel viewModel) {
             hintText:
                 viewModel.state.value.endereco.asSuccessOrNull()?.logradouro ??
                     'Não encontrado',
+          ),
+          readOnly: true,
+        ),
+        const SizedBox(height: 16),
+        const Text("Ultimo CEP pesquisado"),
+        const SizedBox(height: 4),
+        TextField(
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            hintText:
+                viewModel.state.value.lastCep.asSuccessOrNull() ??
+                    'Nenhum CEP pesquisado Recentemente',
           ),
           readOnly: true,
         ),
