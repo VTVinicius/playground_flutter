@@ -22,8 +22,8 @@ import '../presentation/features_features/feature_address/history/history_viewmo
 final getIt = GetIt.instance;
 
 void setupGetIt() {
-  domainModule();
   dataModule();
+  domainModule();
   repositoryModule();
   viewModelModule();
 }
@@ -33,21 +33,24 @@ void dataModule() {
   getIt.registerSingleton<NetworkManager>(NetworkManager());
   getIt.registerSingleton<PreferencesHelper>(PreferencesHelper());
 
-  getIt.registerSingleton<ViaCepDataSource>(ViaCepDataSource(NetworkManager()));
-  getIt.registerSingleton<AddressDAO>(AddressDAO(DatabaseHelper.instance));
+  getIt.registerSingleton<ViaCepDataSource>(
+      ViaCepDataSource(GetIt.instance<NetworkManager>()));
+  getIt.registerSingleton<AddressDAO>(
+      AddressDAO(GetIt.instance<DatabaseHelper>()));
 }
 
 void repositoryModule() {
   // Registra os repositórios
 
   getIt.registerSingleton<AddressRepository>(AddressRepositoryImpl(
-      viaCepDataSource: ViaCepDataSource(NetworkManager())));
+      viaCepDataSource: GetIt.instance<ViaCepDataSource>()));
 
-  getIt.registerSingleton<AddressLocalRepository>(AddressLocalRepositoryImpl(
-      addressDAO: AddressDAO(DatabaseHelper.instance)));
+  getIt.registerSingleton<AddressLocalRepository>(
+      AddressLocalRepositoryImpl(addressDAO: GetIt.instance<AddressDAO>()));
 
-  getIt.registerSingleton<AddressPreferencesRepository>(AddressPreferencesRepositoryImpl(
-      preferencesHelper: PreferencesHelper()));
+  getIt.registerSingleton<AddressPreferencesRepository>(
+      AddressPreferencesRepositoryImpl(
+          preferencesHelper: GetIt.instance<PreferencesHelper>()));
 }
 
 void viewModelModule() {

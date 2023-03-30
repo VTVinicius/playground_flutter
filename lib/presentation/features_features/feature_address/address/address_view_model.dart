@@ -42,7 +42,6 @@ class AddressViewModel extends ChangeNotifier {
         notifyListeners();
       },
     );
-    notifyListeners();
   }
 
   Future<void> salvarEndereco(AddressResponse address) async {

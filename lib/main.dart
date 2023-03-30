@@ -1,8 +1,12 @@
+import 'dart:ui';
+
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:playground_flutter/presentation/feature_home/widgets/home_buttons_list.dart';
 import 'package:playground_flutter/presentation/feature_home/widgets/home_top_bar.dart';
 import 'package:playground_flutter/presentation/feature_home/widgets/projects_list.dart';
-
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'data/data_local/database/database_helper.dart';
 import 'di/setup_get_it.dart';
 
@@ -10,10 +14,24 @@ import 'di/setup_get_it.dart';
 
 void main() async {
 
+
   WidgetsFlutterBinding.ensureInitialized();
   setupGetIt();
-  
- final dbHelper = getIt<DatabaseHelper>();
+
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  FlutterError.onError = (errorDetails) {
+    FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+  };
+  // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
+  PlatformDispatcher.instance.onError = (error, stack) {
+    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    return true;
+  };
+  final dbHelper = getIt<DatabaseHelper>();
   await dbHelper.init();
 
   runApp(
