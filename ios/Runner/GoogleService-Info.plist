@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>267071959033-m04lavuqv67haphvj0ajagpmnpmgimr5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.267071959033-m04lavuqv67haphvj0ajagpmnpmgimr5</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC3--ARZ5UdGh9rl8-KYA5HsOnup2bCEyA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>267071959033</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.playgroundFlutter</string>
+	<key>PROJECT_ID</key>
+	<string>playground-flutter-e9ae6</string>
+	<key>STORAGE_BUCKET</key>
+	<string>playground-flutter-e9ae6.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:267071959033:ios:b44f55dc3f519b831b5728</string>
+	<key>DATABASE_URL</key>
+	<string>https://playground-flutter-e9ae6-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
