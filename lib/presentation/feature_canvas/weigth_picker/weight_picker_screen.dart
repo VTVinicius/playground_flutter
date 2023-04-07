@@ -12,23 +12,43 @@ class WeightPickerScreen extends StatefulWidget {
 }
 
 class _MyWeightPickerScreen extends State<WeightPickerScreen> {
+  var weight = 80;
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text('Weight Picker')),
-        body: Center(
-          child: SizedBox(
-            height: 800,
-            width: 400,
-            child: WeightPicker(
-              onWeightChange: (weight) {
-                print('Weight changed: $weight');
-              },
-            ),
+    return Stack(
+      children: [
+        Scaffold(
+          backgroundColor: AppColors.background,
+          appBar: CustomAppBar(
+            backgroundColor: AppColors.blueCanvasLight,
+            textColor: AppColors.blueCanvasDark,
+            titleText: "Relogio de Ponteiros",
+          ),
+          body: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Spacer(),
+              Center(child: Text("Peso: $weight", style: TextStyle(fontSize: 48),)),
+
+              Spacer(),
+              // Adiciona um Spacer para empurrar o WeightPicker para baixo
+              // Ou você pode usar um SizedBox com altura específica:
+              // SizedBox(height: 200),
+              Expanded(
+                child: WeightPicker(
+                  onWeightChange: (newWeight) {
+                    setState(() {
+                      weight = newWeight;
+                    });
+                    print('Weight changed: $weight');
+                  },
+                ),
+              ),
+            ],
           ),
         ),
-      ),
+      ],
     );
   }
 }

@@ -28,6 +28,7 @@ class WeightPicker extends StatefulWidget {
 class _WeightPickerState extends State<WeightPicker> {
   double _angle = 0;
   double _oldAngle = 0;
+  double _initialTouchAngle = 0;
   Offset _circleCenter = Offset.zero;
 
   @override
@@ -35,17 +36,26 @@ class _WeightPickerState extends State<WeightPicker> {
     return GestureDetector(
       onScaleStart: (details) {
         _oldAngle = _angle;
+        _initialTouchAngle = -math.atan2(
+          _circleCenter.dx - details.localFocalPoint.dx,
+          _circleCenter.dy - details.localFocalPoint.dy,
+        ) *
+            (180.0 / math.pi);
       },
       onScaleUpdate: (details) {
-        double touchAngle = -math.atan2(
+        double currentTouchAngle = -math.atan2(
           _circleCenter.dx - details.localFocalPoint.dx,
           _circleCenter.dy - details.localFocalPoint.dy,
         ) *
             (180.0 / math.pi);
 
-        // Adicione um fator de escala aqui (valores menores tornam o deslize mais lento)
-        double rotationFactor = 0.3;
-        double newAngle = _oldAngle + (touchAngle - _oldAngle) * rotationFactor;
+        double angleDifference = currentTouchAngle - _initialTouchAngle;
+        double newAngle = _oldAngle + angleDifference;
+
+        // Limita o ângulo de rotação com base nos valores mínimo e máximo
+        double minAngle = (widget.initialWeight - widget.maxWeight).toDouble();
+        double maxAngle = (widget.initialWeight - widget.minWeight).toDouble();
+        newAngle = newAngle.clamp(minAngle, maxAngle);
 
         setState(() {
           _angle = newAngle;
@@ -55,6 +65,7 @@ class _WeightPickerState extends State<WeightPicker> {
             (widget.initialWeight - _angle).round().clamp(
                 widget.minWeight, widget.maxWeight));
       },
+
       child: CustomPaint(
         painter: _WeightPickerPainter(
           style: widget.style,
@@ -71,7 +82,6 @@ class _WeightPickerState extends State<WeightPicker> {
     );
   }
 }
-
 class _WeightPickerPainter extends CustomPainter {
   final ScaleStyle style;
   final int minWeight;
