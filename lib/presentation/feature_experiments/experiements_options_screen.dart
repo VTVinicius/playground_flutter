@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:playground_flutter/presentation/feature_experiments/input_text/input_text_screen.dart';
 import 'package:playground_flutter/uikit/theme/app_colors.dart';
 
 import '../../uikit/widgets/app_bar/custom_app_bar.dart';
 import '../../uikit/widgets/buttons/options_custom_button.dart';
+import 'buttons/buttons_screen.dart';
 
 class ExperimentOptionsScreen extends StatelessWidget {
   const ExperimentOptionsScreen({Key? key}) : super(key: key);
@@ -22,14 +24,26 @@ class ExperimentOptionsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             OptionsCustomButton(
-              onPressed: () {},
-              text: "Em Breve",
+              onPressed: () {
+                onPressed:
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const ButtonsScreen())));
+              },
+              text: "Buttons",
               buttonColor: AppColors.greenExperimentsLight,
               textColor: AppColors.greenExperimentsDark,
             ),
             OptionsCustomButton(
-              onPressed: () {},
-              text: "Em Breve",
+              onPressed: () {
+                onPressed:
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const InputTextScreen())));
+              },
+              text: "Input Text",
               buttonColor: AppColors.greenExperimentsLight,
               textColor: AppColors.greenExperimentsDark,
             ),

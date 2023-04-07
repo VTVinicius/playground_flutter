@@ -14,8 +14,8 @@ class InputTextScreen extends StatelessWidget {
         backgroundColor: AppColors.background,
         appBar: CustomAppBar(
             titleText: 'Tela de Input Text',
-            textColor: AppColors.purpleUikitDark,
-            backgroundColor: AppColors.purpleUikitLight),
+            textColor: AppColors.greenExperimentsDark,
+            backgroundColor: AppColors.greenExperimentsLight),
         body: Container(
             alignment: Alignment.topCenter,
             child: Container(

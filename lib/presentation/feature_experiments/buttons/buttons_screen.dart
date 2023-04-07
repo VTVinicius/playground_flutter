@@ -13,8 +13,8 @@ class ButtonsScreen extends StatelessWidget {
       backgroundColor: AppColors.background,
       appBar: CustomAppBar(
           titleText: 'Tela de Botões',
-          textColor: AppColors.purpleUikitDark,
-          backgroundColor: AppColors.purpleUikitLight),
+          textColor: AppColors.greenExperimentsDark,
+          backgroundColor: AppColors.greenExperimentsLight),
       body: Container(
           alignment: Alignment.center,
           child: Column(

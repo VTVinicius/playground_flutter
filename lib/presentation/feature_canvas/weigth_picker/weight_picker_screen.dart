@@ -23,7 +23,7 @@ class _MyWeightPickerScreen extends State<WeightPickerScreen> {
           appBar: CustomAppBar(
             backgroundColor: AppColors.blueCanvasLight,
             textColor: AppColors.blueCanvasDark,
-            titleText: "Relogio de Ponteiros",
+            titleText: "Seletor de Peso",
           ),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
