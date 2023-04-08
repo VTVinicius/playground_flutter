@@ -16,7 +16,7 @@ class ScaleStyle {
   final double textSize;
 
   const ScaleStyle({
-    this.scaleWidth = 100,
+    this.scaleWidth = 150,
     this.radius = 550,
     this.normalLineColor = Colors.grey,
     this.fiveStepLineColor = Colors.green,
@@ -25,8 +25,8 @@ class ScaleStyle {
     this.fiveStepLineLength = 25,
     this.tenStepLineLength = 35,
     this.scaleIndicatorColor = Colors.green,
-    this.scaleIndicatorLength = 60,
-    this.textSize = 18,
+    this.scaleIndicatorLength = 70,
+    this.textSize = 20,
   });
 }
 

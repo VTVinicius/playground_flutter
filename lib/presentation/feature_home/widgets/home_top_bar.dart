@@ -36,7 +36,7 @@ class TopBarHome extends StatelessWidget {
         const Text("Vinicius Teixeira",
             style: TextStyle(color: Colors.white, fontSize: 24)),
         const SizedBox(height: 4),
-        const Text("Desenvolvedor Android",
+        const Text("Desenvolvedor Android e Flutter",
             style: TextStyle(color: Colors.white, fontSize: 14)),
         const SizedBox(height: 16),
       ]),
