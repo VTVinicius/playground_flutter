@@ -3,6 +3,7 @@ import 'package:playground_flutter/uikit/theme/app_colors.dart';
 
 import '../../uikit/widgets/app_bar/custom_app_bar.dart';
 import '../../uikit/widgets/buttons/options_custom_button.dart';
+import 'buttons/buttons_uikit.dart';
 
 class UikitOptionsScreen extends StatelessWidget {
   const UikitOptionsScreen({Key? key}) : super(key: key);
@@ -22,8 +23,14 @@ class UikitOptionsScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             OptionsCustomButton(
-              onPressed: () {},
-              text: "Em Breve",
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const ButtonsUiKit())));
+
+              },
+              text: "Botões",
               buttonColor: AppColors.purpleUikitLight,
               textColor: AppColors.purpleUikitDark,
             ),

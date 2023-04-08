@@ -1,0 +1,300 @@
+import 'package:flutter/material.dart';
+import 'package:playground_flutter/presentation/feature_experiments/animations/animated_builder/animated_builder_screen.dart';
+import 'package:playground_flutter/presentation/feature_experiments/animations/animated_container/animated_container_screen.dart';
+import 'package:playground_flutter/presentation/feature_experiments/animations/animated_cross_fade/animated_cross_fade_screen.dart';
+import 'package:playground_flutter/presentation/feature_experiments/animations/animated_default_text_style/animated_defalut_text_style_screnn.dart';
+import 'package:playground_flutter/presentation/feature_experiments/animations/animated_list/animated_list_screen.dart';
+import 'package:playground_flutter/presentation/feature_experiments/animations/animated_opacity/animated_opacity_screen.dart';
+import 'package:playground_flutter/presentation/feature_experiments/animations/animated_physical_model/animated_physical_model_screen.dart';
+import 'package:playground_flutter/presentation/feature_experiments/animations/animated_positioned/animated_positioned_screen.dart';
+import 'package:playground_flutter/presentation/feature_experiments/animations/animated_size/animated_size_screen.dart';
+import 'package:playground_flutter/presentation/feature_experiments/animations/animated_widget/animated_widget_screen.dart';
+import 'package:playground_flutter/presentation/feature_experiments/animations/animation_align/animated_align_screen.dart';
+import 'package:playground_flutter/presentation/feature_experiments/animations/decorated_box_transition/decorated_box_transition_screen.dart';
+import 'package:playground_flutter/presentation/feature_experiments/animations/hero/hero_screen.dart';
+import 'package:playground_flutter/presentation/feature_experiments/animations/positioned_transition/positioned_transition_screen.dart';
+import 'package:playground_flutter/presentation/feature_experiments/animations/rotation_transition/rotation_transition_screen.dart';
+import 'package:playground_flutter/presentation/feature_experiments/animations/scale_transition/scale_transition_screen.dart';
+import 'package:playground_flutter/presentation/feature_experiments/animations/size_transition/size_transition_screen.dart';
+import 'package:playground_flutter/presentation/feature_experiments/animations/slide_transition/slide_transition_screen.dart';
+
+import '../../../uikit/theme/app_colors.dart';
+import '../../../uikit/widgets/app_bar/custom_app_bar.dart';
+import '../../../uikit/widgets/buttons/options_custom_button.dart';
+import 'animated_modal_barrier/animated_modal_barrier_screen.dart';
+import 'fade_transition/fade_transition_screen.dart';
+
+class AnimationsOptionsScreen extends StatelessWidget {
+  const AnimationsOptionsScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      appBar: CustomAppBar(
+          titleText: 'Animações',
+          textColor: AppColors.greenExperimentsDark,
+          backgroundColor: AppColors.greenExperimentsLight),
+      body: Container(
+        alignment: Alignment.center,
+        child: SingleChildScrollView(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(height: 24),
+            OptionsCustomButton(
+              onPressed: () {
+                onPressed:
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const AnimatedBuilderScreen())));
+              },
+              text: "AnimatedBuilderScreen",
+              buttonColor: AppColors.greenExperimentsLight,
+              textColor: AppColors.greenExperimentsDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {
+                onPressed:
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) =>
+                            const AnimatedContainerScreen())));
+              },
+              text: "AnimatedContainerScreen",
+              buttonColor: AppColors.greenExperimentsLight,
+              textColor: AppColors.greenExperimentsDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {
+                onPressed:
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) =>
+                            const AnimatedCrossFadeScreen())));
+              },
+              text: "AnimatedCrossFadeScreen",
+              buttonColor: AppColors.greenExperimentsLight,
+              textColor: AppColors.greenExperimentsDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {
+                onPressed:
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) =>
+                            const AnimatedDefaultTextStyleScreen())));
+              },
+              text: "AnimatedDefaultTextStyleScreen",
+              buttonColor: AppColors.greenExperimentsLight,
+              textColor: AppColors.greenExperimentsDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {
+                onPressed:
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const AnimatedListScreen())));
+              },
+              text: "AnimatedListScreen",
+              buttonColor: AppColors.greenExperimentsLight,
+              textColor: AppColors.greenExperimentsDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {
+                onPressed:
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) =>
+                            const AnimatedModalBarrierScreen())));
+              },
+              text: "AnimatedModalBarrierScreen",
+              buttonColor: AppColors.greenExperimentsLight,
+              textColor: AppColors.greenExperimentsDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {
+                onPressed:
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const AnimatedOpacityScreen())));
+              },
+              text: "AnimatedOpacityScreen",
+              buttonColor: AppColors.greenExperimentsLight,
+              textColor: AppColors.greenExperimentsDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {
+                onPressed:
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) =>
+                            const AnimatedPhysicalModelScreen())));
+              },
+              text: "AnimatedPhysicalModelScreen",
+              buttonColor: AppColors.greenExperimentsLight,
+              textColor: AppColors.greenExperimentsDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {
+                onPressed:
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) =>
+                            const AnimatedPositionedScreen())));
+              },
+              text: "AnimatedPositionedScreen",
+              buttonColor: AppColors.greenExperimentsLight,
+              textColor: AppColors.greenExperimentsDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {
+                onPressed:
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const AnimatedSizeScreen())));
+              },
+              text: "AnimatedSizeScreen",
+              buttonColor: AppColors.greenExperimentsLight,
+              textColor: AppColors.greenExperimentsDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {
+                onPressed:
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const AnimatedWidgetScreen())));
+              },
+              text: "AnimatedWidgetScreen",
+              buttonColor: AppColors.greenExperimentsLight,
+              textColor: AppColors.greenExperimentsDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {
+                onPressed:
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const AnimatedAlignScreen())));
+              },
+              text: "AnimatedAlignScreen",
+              buttonColor: AppColors.greenExperimentsLight,
+              textColor: AppColors.greenExperimentsDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {
+                onPressed:
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) =>
+                            const DecoratedBoxTransitionScreen())));
+              },
+              text: "DecoratedBoxTransitionScreen",
+              buttonColor: AppColors.greenExperimentsLight,
+              textColor: AppColors.greenExperimentsDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {
+                onPressed:
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const FadeTransitionScreen())));
+              },
+              text: "FadeTransitionScreen",
+              buttonColor: AppColors.greenExperimentsLight,
+              textColor: AppColors.greenExperimentsDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {
+                onPressed:
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const HeroScreen())));
+              },
+              text: "HeroScreen",
+              buttonColor: AppColors.greenExperimentsLight,
+              textColor: AppColors.greenExperimentsDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {
+                onPressed:
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) =>
+                            const PositionedTransitionScreen())));
+              },
+              text: "PositionedTransitionScreen",
+              buttonColor: AppColors.greenExperimentsLight,
+              textColor: AppColors.greenExperimentsDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {
+                onPressed:
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) =>
+                            const RotationTransitionScreen())));
+              },
+              text: "RotationTransitionScreen",
+              buttonColor: AppColors.greenExperimentsLight,
+              textColor: AppColors.greenExperimentsDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {
+                onPressed:
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const ScaleTransitionScreen())));
+              },
+              text: "ScaleTransitionScreen",
+              buttonColor: AppColors.greenExperimentsLight,
+              textColor: AppColors.greenExperimentsDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {
+                onPressed:
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const SizeTransitionScreen())));
+              },
+              text: "ASizeTransitionScreen",
+              buttonColor: AppColors.greenExperimentsLight,
+              textColor: AppColors.greenExperimentsDark,
+            ),
+            OptionsCustomButton(
+              onPressed: () {
+                onPressed:
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const SlideTransitionScreen())));
+              },
+              text: "SlideTransitionScreen",
+              buttonColor: AppColors.greenExperimentsLight,
+              textColor: AppColors.greenExperimentsDark,
+            ),
+            const SizedBox(height: 24),
+          ],
+        )),
+      ),
+    );
+  }
+}

@@ -7,7 +7,7 @@ import '../../../uikit/theme/app_colors.dart';
 import '../../feature_experiments/experiements_options_screen.dart';
 import '../../feature_uikit/uikit_options_screen.dart';
 import '../../features_features/features_options_screen.dart';
-import 'features_button.dart';
+import '../../../uikit/widgets/buttons/features_button.dart';
 
 class HomeButtonsList extends StatelessWidget {
   const HomeButtonsList({super.key});

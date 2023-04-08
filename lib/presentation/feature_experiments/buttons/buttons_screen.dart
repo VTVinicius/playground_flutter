@@ -23,8 +23,8 @@ class ButtonsScreen extends StatelessWidget {
               OutlinedButton(
                 onPressed: () {},
                 style: OutlinedButton.styleFrom(
-                  primary: Colors.red,
-                  side: const BorderSide(color: Colors.red, width: 2),
+                  primary: Colors.black,
+                  side: const BorderSide(color: Colors.black, width: 2),
                 ),
                 child: const Text("Outlined Button"),
               ),
@@ -33,8 +33,7 @@ class ButtonsScreen extends StatelessWidget {
 
               CupertinoButton(
                   onPressed: () {},
-                  child: const Text("Cupertino Button"),
-                  color: Colors.green),
+                  child: const Text("Cupertino Button"), color: Colors.blue),
               const SizedBox(height: 16),
 
               ElevatedButton(
