@@ -50,7 +50,7 @@ class AnimationsOptionsScreen extends StatelessWidget {
                     MaterialPageRoute(
                         builder: ((context) => const AnimatedBuilderScreen())));
               },
-              text: "AnimatedBuilderScreen",
+              text: "Animated Builder",
               buttonColor: AppColors.greenExperimentsLight,
               textColor: AppColors.greenExperimentsDark,
             ),
@@ -63,7 +63,7 @@ class AnimationsOptionsScreen extends StatelessWidget {
                         builder: ((context) =>
                             const AnimatedContainerScreen())));
               },
-              text: "AnimatedContainerScreen",
+              text: "Animated Container",
               buttonColor: AppColors.greenExperimentsLight,
               textColor: AppColors.greenExperimentsDark,
             ),
@@ -76,7 +76,7 @@ class AnimationsOptionsScreen extends StatelessWidget {
                         builder: ((context) =>
                             const AnimatedCrossFadeScreen())));
               },
-              text: "AnimatedCrossFadeScreen",
+              text: "Animated Cross Fade",
               buttonColor: AppColors.greenExperimentsLight,
               textColor: AppColors.greenExperimentsDark,
             ),
@@ -89,7 +89,7 @@ class AnimationsOptionsScreen extends StatelessWidget {
                         builder: ((context) =>
                             const AnimatedDefaultTextStyleScreen())));
               },
-              text: "AnimatedDefaultTextStyleScreen",
+              text: "Animated Default Text Style",
               buttonColor: AppColors.greenExperimentsLight,
               textColor: AppColors.greenExperimentsDark,
             ),
@@ -101,7 +101,7 @@ class AnimationsOptionsScreen extends StatelessWidget {
                     MaterialPageRoute(
                         builder: ((context) => const AnimatedListScreen())));
               },
-              text: "AnimatedListScreen",
+              text: "Animated List",
               buttonColor: AppColors.greenExperimentsLight,
               textColor: AppColors.greenExperimentsDark,
             ),
@@ -114,7 +114,7 @@ class AnimationsOptionsScreen extends StatelessWidget {
                         builder: ((context) =>
                             const AnimatedModalBarrierScreen())));
               },
-              text: "AnimatedModalBarrierScreen",
+              text: "Animated Modal Barrier",
               buttonColor: AppColors.greenExperimentsLight,
               textColor: AppColors.greenExperimentsDark,
             ),
@@ -126,7 +126,7 @@ class AnimationsOptionsScreen extends StatelessWidget {
                     MaterialPageRoute(
                         builder: ((context) => const AnimatedOpacityScreen())));
               },
-              text: "AnimatedOpacityScreen",
+              text: "Animated Opacity",
               buttonColor: AppColors.greenExperimentsLight,
               textColor: AppColors.greenExperimentsDark,
             ),
@@ -139,7 +139,7 @@ class AnimationsOptionsScreen extends StatelessWidget {
                         builder: ((context) =>
                             const AnimatedPhysicalModelScreen())));
               },
-              text: "AnimatedPhysicalModelScreen",
+              text: "Animated Physical Model",
               buttonColor: AppColors.greenExperimentsLight,
               textColor: AppColors.greenExperimentsDark,
             ),
@@ -152,7 +152,7 @@ class AnimationsOptionsScreen extends StatelessWidget {
                         builder: ((context) =>
                             const AnimatedPositionedScreen())));
               },
-              text: "AnimatedPositionedScreen",
+              text: "Animated Positioned",
               buttonColor: AppColors.greenExperimentsLight,
               textColor: AppColors.greenExperimentsDark,
             ),
@@ -164,7 +164,7 @@ class AnimationsOptionsScreen extends StatelessWidget {
                     MaterialPageRoute(
                         builder: ((context) => const AnimatedSizeScreen())));
               },
-              text: "AnimatedSizeScreen",
+              text: "Animated Size",
               buttonColor: AppColors.greenExperimentsLight,
               textColor: AppColors.greenExperimentsDark,
             ),
@@ -176,7 +176,7 @@ class AnimationsOptionsScreen extends StatelessWidget {
                     MaterialPageRoute(
                         builder: ((context) => const AnimatedWidgetScreen())));
               },
-              text: "AnimatedWidgetScreen",
+              text: "Animated Widget",
               buttonColor: AppColors.greenExperimentsLight,
               textColor: AppColors.greenExperimentsDark,
             ),
@@ -188,7 +188,7 @@ class AnimationsOptionsScreen extends StatelessWidget {
                     MaterialPageRoute(
                         builder: ((context) => const AnimatedAlignScreen())));
               },
-              text: "AnimatedAlignScreen",
+              text: "Animated Align",
               buttonColor: AppColors.greenExperimentsLight,
               textColor: AppColors.greenExperimentsDark,
             ),
@@ -201,7 +201,7 @@ class AnimationsOptionsScreen extends StatelessWidget {
                         builder: ((context) =>
                             const DecoratedBoxTransitionScreen())));
               },
-              text: "DecoratedBoxTransitionScreen",
+              text: "Decorated Box Transition",
               buttonColor: AppColors.greenExperimentsLight,
               textColor: AppColors.greenExperimentsDark,
             ),
@@ -213,7 +213,7 @@ class AnimationsOptionsScreen extends StatelessWidget {
                     MaterialPageRoute(
                         builder: ((context) => const FadeTransitionScreen())));
               },
-              text: "FadeTransitionScreen",
+              text: "Fade Transition",
               buttonColor: AppColors.greenExperimentsLight,
               textColor: AppColors.greenExperimentsDark,
             ),
@@ -225,7 +225,7 @@ class AnimationsOptionsScreen extends StatelessWidget {
                     MaterialPageRoute(
                         builder: ((context) => const HeroScreen())));
               },
-              text: "HeroScreen",
+              text: "Hero",
               buttonColor: AppColors.greenExperimentsLight,
               textColor: AppColors.greenExperimentsDark,
             ),
@@ -238,7 +238,7 @@ class AnimationsOptionsScreen extends StatelessWidget {
                         builder: ((context) =>
                             const PositionedTransitionScreen())));
               },
-              text: "PositionedTransitionScreen",
+              text: "Positioned Transition",
               buttonColor: AppColors.greenExperimentsLight,
               textColor: AppColors.greenExperimentsDark,
             ),
@@ -251,7 +251,7 @@ class AnimationsOptionsScreen extends StatelessWidget {
                         builder: ((context) =>
                             const RotationTransitionScreen())));
               },
-              text: "RotationTransitionScreen",
+              text: "Rotation Transition",
               buttonColor: AppColors.greenExperimentsLight,
               textColor: AppColors.greenExperimentsDark,
             ),
@@ -263,7 +263,7 @@ class AnimationsOptionsScreen extends StatelessWidget {
                     MaterialPageRoute(
                         builder: ((context) => const ScaleTransitionScreen())));
               },
-              text: "ScaleTransitionScreen",
+              text: "Scale Transition",
               buttonColor: AppColors.greenExperimentsLight,
               textColor: AppColors.greenExperimentsDark,
             ),
@@ -275,7 +275,7 @@ class AnimationsOptionsScreen extends StatelessWidget {
                     MaterialPageRoute(
                         builder: ((context) => const SizeTransitionScreen())));
               },
-              text: "ASizeTransitionScreen",
+              text: "ASize Transition",
               buttonColor: AppColors.greenExperimentsLight,
               textColor: AppColors.greenExperimentsDark,
             ),
@@ -287,7 +287,7 @@ class AnimationsOptionsScreen extends StatelessWidget {
                     MaterialPageRoute(
                         builder: ((context) => const SlideTransitionScreen())));
               },
-              text: "SlideTransitionScreen",
+              text: "Slide Transition",
               buttonColor: AppColors.greenExperimentsLight,
               textColor: AppColors.greenExperimentsDark,
             ),
