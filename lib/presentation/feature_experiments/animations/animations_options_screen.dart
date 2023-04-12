@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:playground_flutter/presentation/feature_experiments/animations/animated_builder/animated_builder_screen.dart';
 import 'package:playground_flutter/presentation/feature_experiments/animations/animated_container/animated_container_screen.dart';
 import 'package:playground_flutter/presentation/feature_experiments/animations/animated_cross_fade/animated_cross_fade_screen.dart';
-import 'package:playground_flutter/presentation/feature_experiments/animations/animated_default_text_style/animated_defalut_text_style_screnn.dart';
+import 'package:playground_flutter/presentation/feature_experiments/animations/animated_default_text_style/animated_defalut_text_style_screen.dart';
 import 'package:playground_flutter/presentation/feature_experiments/animations/animated_list/animated_list_screen.dart';
 import 'package:playground_flutter/presentation/feature_experiments/animations/animated_opacity/animated_opacity_screen.dart';
 import 'package:playground_flutter/presentation/feature_experiments/animations/animated_physical_model/animated_physical_model_screen.dart';
