@@ -21,7 +21,6 @@ import '../../../uikit/theme/app_colors.dart';
 import '../../../uikit/widgets/app_bar/custom_app_bar.dart';
 import '../../../uikit/widgets/buttons/options_custom_button.dart';
 import 'animated_align/animated_align_screen.dart';
-import 'animated_modal_barrier/animated_modal_barrier_screen.dart';
 import 'fade_transition/fade_transition_screen.dart';
 
 class AnimationsOptionsScreen extends StatelessWidget {
@@ -114,19 +113,6 @@ class AnimationsOptionsScreen extends StatelessWidget {
                         builder: ((context) => const AnimatedListScreen())));
               },
               text: "Animated List",
-              buttonColor: AppColors.greenExperimentsLight,
-              textColor: AppColors.greenExperimentsDark,
-            ),
-            OptionsCustomButton(
-              onPressed: () {
-                onPressed:
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: ((context) =>
-                            const AnimatedModalBarrierScreen())));
-              },
-              text: "Animated Modal Barrier",
               buttonColor: AppColors.greenExperimentsLight,
               textColor: AppColors.greenExperimentsDark,
             ),
