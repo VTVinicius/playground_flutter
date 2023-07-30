@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:playground_flutter/uikit/theme/app_colors.dart';
 
 import '../../../uikit/widgets/app_bar/custom_app_bar.dart';
+import 'neomorfic_button.dart';
 
 class ButtonsScreen extends StatelessWidget {
   const ButtonsScreen({Key? key}) : super(key: key);
@@ -38,6 +39,11 @@ class ButtonsScreen extends StatelessWidget {
 
               ElevatedButton(
                   onPressed: () {}, child: const Text("Elevated Button")),
+              const SizedBox(height: 16),
+
+              NeumorphicButton(
+                text: "Neumorphic Button",
+              ),
             ],
           )),
     );

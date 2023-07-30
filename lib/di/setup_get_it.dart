@@ -16,6 +16,7 @@ import 'package:playground_flutter/domain/usecase/address/save_address_usecase.d
 import 'package:playground_flutter/domain/usecase/address/save_last_cep_usecase.dart';
 
 import '../domain/usecase/address/get_all_addresses_usecase.dart';
+import '../inactivity_notifier.dart';
 import '../presentation/feature_canvas/clock/clock_viewmodel.dart';
 import '../presentation/features_features/feature_address/address/address_view_model.dart';
 import '../presentation/features_features/feature_address/history/history_viewmodel.dart';
@@ -66,6 +67,8 @@ void viewModelModule() {
         getIt.get<GetAllAddressesUseCase>(),
       ));
   getIt.registerFactory<ClockViewModel>(() => ClockViewModel());
+
+  getIt.registerSingleton<UserActivityNotifier>(UserActivityNotifier());
 }
 
 void domainModule() {

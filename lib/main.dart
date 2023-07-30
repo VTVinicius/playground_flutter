@@ -1,7 +1,10 @@
 import 'dart:ui';
 
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:playground_flutter/presentation/feature_home/widgets/home_buttons_list.dart';
 import 'package:playground_flutter/presentation/feature_home/widgets/home_top_bar.dart';
 import 'package:playground_flutter/presentation/feature_home/widgets/projects_list.dart';
@@ -9,6 +12,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'data/data_local/database/database_helper.dart';
 import 'di/setup_get_it.dart';
+import 'inactivity_notifier.dart';
 
 
 
@@ -34,25 +38,41 @@ void main() async {
   final dbHelper = getIt<DatabaseHelper>();
   await dbHelper.init();
 
+  var viewModel = getIt.get<UserActivityNotifier>();
+
+
+  final routeObserver = RouteObserver<PageRoute>();
+  final userInteractionObserver = UserInteractionObserver();
+  WidgetsBinding.instance.addObserver(userInteractionObserver);
+
   runApp(
-    const MyApp(),
+    GestureDetector(
+      onTap: viewModel.refreshLastInteraction,
+      child: MyApp()
+    ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final routeObserver = RouteObserver<PageRoute>();
+
+   MyApp({Key? key}) : super(key: key);
+
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      navigatorObservers: [routeObserver],
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(),
     );
+
   }
+
 }
 
 class MyHomePage extends StatefulWidget {

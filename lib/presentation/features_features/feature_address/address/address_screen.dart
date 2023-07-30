@@ -8,6 +8,8 @@ import 'package:playground_flutter/uikit/widgets/buttons/options_custom_button.d
 import 'package:provider/provider.dart';
 
 import '../../../../core/error_widget.dart';
+import '../../../../di/setup_get_it.dart';
+import '../../../../inactivity_notifier.dart';
 import '../history/history_sceen.dart';
 import 'address_view_model.dart';
 
@@ -21,6 +23,7 @@ class AddressScreen extends StatefulWidget {
 class _MyAddressScreen extends State<AddressScreen> {
   var titulo = "Bem Vindo";
   var cep = "Pesquisar CEP";
+  var viewModel2 = getIt.get<UserActivityNotifier>();
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +31,9 @@ class _MyAddressScreen extends State<AddressScreen> {
       create: (_) => GetIt.instance.get<AddressViewModel>(),
       child: Consumer<AddressViewModel>(
         builder: (_, viewModel, __) {
-          return Stack(
+          return  GestureDetector(
+              onTap: viewModel2.refreshLastInteraction,
+              child: Stack(
             children: [
               Scaffold(
                 backgroundColor: AppColors.background,
@@ -93,6 +98,7 @@ class _MyAddressScreen extends State<AddressScreen> {
                 error: "Não foi possível Salvar o endereço",
               ),
             ],
+          ),
           );
         },
       ),

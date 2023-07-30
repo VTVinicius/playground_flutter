@@ -17,3 +17,23 @@ class ViaCepDataSource {
     return data;
   }
 }
+
+class WebService {
+
+  WebService(this.networkManager);
+
+  static const String viacepurl = 'https://viacep.com.br/ws/';
+
+  final NetworkManager networkManager;
+
+  Future<AddressResponse> getAddress(String cep) async {
+    final response =
+    await networkManager.request(RequestMethod.get, '$viacepurl$cep/json/');
+
+    final data = AddressResponse.fromJson(response.data);
+
+    return data;
+  }
+
+
+}
